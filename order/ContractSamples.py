@@ -121,17 +121,15 @@ class ContractSamples:
         contract.primaryExchange = "ISLAND"
         #! [stkcontractwithprimary]
         return contract
-
-            
+     
     @staticmethod
     def USStockAtSmart():
         contract = Contract()
-        contract.symbol = "IBM"
+        contract.symbol = "GOOG"
         contract.secType = "STK"
         contract.currency = "USD"
         contract.exchange = "SMART"
         return contract
-
 
     @staticmethod
     def USOptionContract():

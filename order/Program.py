@@ -252,7 +252,7 @@ class TestApp(TestWrapper, TestClient):
             #self.reqGlobalCancel()
             #self.marketDataTypeOperations()
             #self.accountOperations_req()
-            #self.tickDataOperations_req()
+            self.tickDataOperations_req()
             #self.marketDepthOperations_req()
             #self.realTimeBarsOperations_req()
             #self.historicalDataOperations_req()
@@ -265,7 +265,7 @@ class TestApp(TestWrapper, TestClient):
             #self.miscelaneousOperations()
             #self.linkingOperations()
             #self.financialAdvisorOperations()
-            self.orderOperations_req()
+            ### self.orderOperations_req()
             #self.rerouteCFDOperations()
             #self.marketRuleOperations()
             #self.pnlOperations_req()
@@ -642,61 +642,61 @@ class TestApp(TestWrapper, TestClient):
 
         # ! [reqmktdata]
         self.reqMktData(1000, ContractSamples.USStockAtSmart(), "", False, False, [])
-        self.reqMktData(1001, ContractSamples.StockComboContract(), "", False, False, [])
+        #### self.reqMktData(1001, ContractSamples.StockComboContract(), "", False, False, [])
         # ! [reqmktdata]
 
         # ! [reqmktdata_snapshot]
-        self.reqMktData(1002, ContractSamples.FutureComboContract(), "", True, False, [])
+        #### self.reqMktData(1002, ContractSamples.FutureComboContract(), "", True, False, [])
         # ! [reqmktdata_snapshot]
 
         # ! [regulatorysnapshot]
         # Each regulatory snapshot request incurs a 0.01 USD fee
-        self.reqMktData(1003, ContractSamples.USStock(), "", False, True, [])
+        #### self.reqMktData(1003, ContractSamples.USStock(), "", False, True, [])
         # ! [regulatorysnapshot]
 
         # ! [reqmktdata_genticks]
         # Requesting RTVolume (Time & Sales), shortable and Fundamental Ratios generic ticks
-        self.reqMktData(1004, ContractSamples.USStockAtSmart(), "233,236,258", False, False, [])
+        #### self.reqMktData(1004, ContractSamples.USStockAtSmart(), "233,236,258", False, False, [])
         # ! [reqmktdata_genticks]
 
         # ! [reqmktdata_contractnews]
         # Without the API news subscription this will generate an "invalid tick type" error
-        self.reqMktData(1005, ContractSamples.USStockAtSmart(), "mdoff,292:BRFG", False, False, [])
-        self.reqMktData(1006, ContractSamples.USStockAtSmart(), "mdoff,292:BRFG+DJNL", False, False, [])
-        self.reqMktData(1007, ContractSamples.USStockAtSmart(), "mdoff,292:BRFUPDN", False, False, [])
-        self.reqMktData(1008, ContractSamples.USStockAtSmart(), "mdoff,292:DJ-RT", False, False, [])
+        #### self.reqMktData(1005, ContractSamples.USStockAtSmart(), "mdoff,292:BRFG", False, False, [])
+        #### self.reqMktData(1006, ContractSamples.USStockAtSmart(), "mdoff,292:BRFG+DJNL", False, False, [])
+        #### self.reqMktData(1007, ContractSamples.USStockAtSmart(), "mdoff,292:BRFUPDN", False, False, [])
+        #### self.reqMktData(1008, ContractSamples.USStockAtSmart(), "mdoff,292:DJ-RT", False, False, [])
         # ! [reqmktdata_contractnews]
 
 
         # ! [reqmktdata_broadtapenews]
-        self.reqMktData(1009, ContractSamples.BRFGbroadtapeNewsFeed(), "mdoff,292", False, False, [])
-        self.reqMktData(1010, ContractSamples.DJNLbroadtapeNewsFeed(), "mdoff,292", False, False, [])
-        self.reqMktData(1011, ContractSamples.DJTOPbroadtapeNewsFeed(), "mdoff,292", False, False, [])
-        self.reqMktData(1012, ContractSamples.BRFUPDNbroadtapeNewsFeed(), "mdoff,292", False, False, [])
+        #### self.reqMktData(1009, ContractSamples.BRFGbroadtapeNewsFeed(), "mdoff,292", False, False, [])
+        #### self.reqMktData(1010, ContractSamples.DJNLbroadtapeNewsFeed(), "mdoff,292", False, False, [])
+        #### self.reqMktData(1011, ContractSamples.DJTOPbroadtapeNewsFeed(), "mdoff,292", False, False, [])
+        #### self.reqMktData(1012, ContractSamples.BRFUPDNbroadtapeNewsFeed(), "mdoff,292", False, False, [])
         # ! [reqmktdata_broadtapenews]
 
         # ! [reqoptiondatagenticks]
         # Requesting data for an option contract will return the greek values
-        self.reqMktData(1013, ContractSamples.OptionWithLocalSymbol(), "", False, False, [])
-        self.reqMktData(1014, ContractSamples.FuturesOnOptions(), "", False, False, []);
+        #### self.reqMktData(1013, ContractSamples.OptionWithLocalSymbol(), "", False, False, [])
+        #### self.reqMktData(1014, ContractSamples.FuturesOnOptions(), "", False, False, []);
         
         # ! [reqoptiondatagenticks]
 
         # ! [reqfuturesopeninterest]
-        self.reqMktData(1015, ContractSamples.SimpleFuture(), "mdoff,588", False, False, [])
+        #### self.reqMktData(1015, ContractSamples.SimpleFuture(), "mdoff,588", False, False, [])
         # ! [reqfuturesopeninterest]
 
         # ! [reqmktdatapreopenbidask]
-        self.reqMktData(1016, ContractSamples.SimpleFuture(), "", False, False, [])
+        #### self.reqMktData(1016, ContractSamples.SimpleFuture(), "", False, False, [])
         # ! [reqmktdatapreopenbidask]
 
         # ! [reqavgoptvolume]
-        self.reqMktData(1017, ContractSamples.USStockAtSmart(), "mdoff,105", False, False, [])
+        #### self.reqMktData(1017, ContractSamples.USStockAtSmart(), "mdoff,105", False, False, [])
         # ! [reqavgoptvolume]
         
         # ! [reqsmartcomponents]
         # Requests description of map of single letter exchange codes to full exchange names
-        self.reqSmartComponents(1018, "a6")
+        #### self.reqSmartComponents(1018, "a6")
         # ! [reqsmartcomponents]
         
 
@@ -734,6 +734,7 @@ class TestApp(TestWrapper, TestClient):
     def tickPrice(self, reqId: TickerId, tickType: TickType, price: float,
                   attrib: TickAttrib):
         super().tickPrice(reqId, tickType, price, attrib)
+        print("-----------------------------------",price)
         print("TickPrice. TickerId:", reqId, "tickType:", tickType,
               "Price:", price, "CanAutoExecute:", attrib.canAutoExecute,
               "PastLimit:", attrib.pastLimit, end=' ')
@@ -1464,7 +1465,7 @@ class TestApp(TestWrapper, TestClient):
         # ! [place_midprice]
         #### self.placeOrder(self.nextOrderId(), ContractSamples.USStockAtSmart(), OrderSamples.Midprice("BUY", 1, 150))
         # ! [place_midprice]
-		
+
         # ! [ad]
         # The Time Zone in "startTime" and "endTime" attributes is ignored and always defaulted to GMT
         AvailableAlgoParams.FillAccumulateDistributeParams(baseOrder, 10, 60, True, True, 1, True, True, "20161010-12:00:00 GMT", "20161010-16:00:00 GMT")
@@ -1930,11 +1931,11 @@ def main():
         app = TestApp()
         if args.global_cancel:
             app.globalCancelOnly = True
-			
+
         logging.debug( "START CONNECTION TO SERVER" )
         print("START CONNECTION TO SERVER %s",args.port)
-        # ! [connect] 127.0.0.1 locahost
-        app.connect("119.29.185.247", args.port, clientId=0)
+        # ! [connect] 127.0.0.1 locahost 119.29.185.247
+        app.connect("127.0.0.1", args.port, clientId=0)
         # ! [connect]
         print("serverVersion:%s connectionTime:%s" % (app.serverVersion(),
                                                       app.twsConnectionTime()))

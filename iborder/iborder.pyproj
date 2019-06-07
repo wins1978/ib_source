@@ -1,27 +1,32 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{cde8f229-c826-4fb6-ac32-ecf05a7fc489}</ProjectGuid>
-    <ProjectHome />
-    <StartupFile>Program.py</StartupFile>
-    <SearchPath>..\..\..\source\pythonclient</SearchPath>
+    <ProjectGuid>c6758072-6a84-4631-8adc-29d189a52c09</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>iborder.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
-    <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <InterpreterId />
+    <Name>iborder</Name>
+    <RootNamespace>iborder</RootNamespace>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
-  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
-  <PropertyGroup>
-    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AvailableAlgoParams.py" />
-    <Compile Include="ContractSamples.py" />
-    <Compile Include="FaAllocationSamples.py" />
+    <Compile Include="Common.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ContractSamples.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ibapi\account_summary_tags.py" />
     <Compile Include="ibapi\client.py" />
     <Compile Include="ibapi\comm.py" />
@@ -49,13 +54,18 @@
     <Compile Include="ibapi\utils.py" />
     <Compile Include="ibapi\wrapper.py" />
     <Compile Include="ibapi\__init__.py" />
-    <Compile Include="OrderSamples.py" />
-    <Compile Include="Program.py" />
-    <Compile Include="ScannerSubscriptionSamples.py" />
+    <Compile Include="iborder.py" />
+    <Compile Include="TestClient.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TestWrapper.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ibapi\" />
     <Folder Include="ibapi\__pycache__\" />
+    <Folder Include="log\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ibapi\ibapi.pyproj" />
@@ -87,4 +97,12 @@
     <Content Include="ibapi\__pycache__\__init__.cpython-37.pyc" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
 </Project>
