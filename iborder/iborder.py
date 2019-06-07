@@ -35,10 +35,12 @@ class TestApp(TestWrapper, TestClient):
         self.started = False
         self.nextValidOrderId = None
 
+
     @iswrapper
     def connectAck(self):
         if self.asynchronous:
             self.startApi()
+
 
     @iswrapper
     def nextValidId(self, orderId: int):
@@ -51,11 +53,9 @@ class TestApp(TestWrapper, TestClient):
     def start(self):
         if self.started:
             return
-
         self.started = True
-
         self.monitorMarketData()
-        # self.monitorRealTimeBars()
+
 
     def monitorMarketData(self):
         self.reqMarketDataType(MarketDataTypeEnum.DELAYED_FROZEN)
@@ -66,11 +66,6 @@ class TestApp(TestWrapper, TestClient):
         self.reqMktData(1002, ContractSamples.StockTQQQ(), "", False, False, [])
         self.reqMktData(1003, ContractSamples.StockMSFT(), "", False, False, [])
 
-    def monitorRealTimeBars(self):
-        # Requesting real time bars
-        # ! [reqrealtimebars]
-        self.reqRealTimeBars(3001, ContractSamples.StockTQQQ(), 5, "MIDPOINT", True, [])
-        # ! [reqrealtimebars] 
 
     @iswrapper
     # ! [tickprice]
@@ -87,13 +82,6 @@ class TestApp(TestWrapper, TestClient):
             #### TODO
     # ! [tickprice]
 
-    @iswrapper
-    # ! [realtimebar]
-    def realtimeBar(self, reqId: TickerId, time:int, open_: float, high: float, low: float, close: float,
-                        volume: int, wap: float, count: int):
-        super().realtimeBar(reqId, time, open_, high, low, close, volume, wap, count)
-        print("RealTimeBar. TickerId:", reqId, RealTimeBar(time, -1, open_, high, low, close, volume, wap, count))
-    # ! [realtimebar]
 
 def main():
     SetupLogger()
