@@ -1758,11 +1758,11 @@ class TestApp(TestWrapper, TestClient):
         self.placeOrder(self.nextOrderId(), ContractSamples.USOptionContract(),
                          OrderSamples.Volatility("SELL", 1, 5, 2))
         '''
-        self.bracketSample()
+        #### self.bracketSample()
 
-        self.conditionSamples()
+        #### self.conditionSamples()
 
-        self.hedgeSample()
+        #### self.hedgeSample()
 
         # NOTE: the following orders are not supported for Paper Trading
         # self.placeOrder(self.nextOrderId(), ContractSamples.USStock(), OrderSamples.AtAuction("BUY", 100, 30.0))
@@ -1789,7 +1789,7 @@ class TestApp(TestWrapper, TestClient):
         # self.placeOrder(lmtParent.OrderId, ContractSamples.EuropeanStock(), lmtParent)
         # Attached TRAIL adjusted can only be attached to LMT parent orders.
         # self.placeOrder(self.nextOrderId(), ContractSamples.EuropeanStock(), OrderSamples.AttachAdjustableToTrailAmount(lmtParent, 34, 32, 33, 0.008))
-        self.algoSamples()
+        #### self.algoSamples()
         
         self.ocaSample()
 
