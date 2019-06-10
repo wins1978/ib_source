@@ -54,7 +54,7 @@ class TestApp(TestWrapper, TestClient):
         if self.started:
             return
         self.started = True
-        self.monitorMarketData()
+        self.historicalDataOperations_req()
 
 
     def monitorMarketData(self):
@@ -66,6 +66,17 @@ class TestApp(TestWrapper, TestClient):
         self.reqMktData(1002, ContractSamples.StockTQQQ(), "", False, False, [])
         self.reqMktData(1003, ContractSamples.StockMSFT(), "", False, False, [])
 
+    def historicalDataOperations_req(self):
+        # Requesting historical data
+        # ! [reqHeadTimeStamp]
+        #### self.reqHeadTimeStamp(4101, ContractSamples.USStockAtSmart(), "TRADES", 0, 1)
+        # ! [reqHeadTimeStamp]
+
+        # ! [reqhistoricaldata]
+        queryTime = (datetime.datetime.today() - datetime.timedelta(days=180)).strftime("%Y%m%d %H:%M:%S")
+        self.reqHistoricalData(4104, ContractSamples.StockGOOG(), "",
+                               "1 M", "1 day", "MIDPOINT", 1, 1, True, [])
+        # ! [reqhistoricaldata]
 
     @iswrapper
     # ! [tickprice]
@@ -82,6 +93,24 @@ class TestApp(TestWrapper, TestClient):
             #### TODO
     # ! [tickprice]
 
+    @iswrapper
+    # ! [historicaldata]
+    def historicalData(self, reqId:int, bar: BarData):
+        print("HistoricalData. ReqId:", reqId, "BarData.", bar)
+    # ! [historicaldata]
+
+    @iswrapper
+    # ! [historicaldataend]
+    def historicalDataEnd(self, reqId: int, start: str, end: str):
+        super().historicalDataEnd(reqId, start, end)
+        print("HistoricalDataEnd. ReqId:", reqId, "from", start, "to", end)
+    # ! [historicaldataend]
+
+    @iswrapper
+    # ! [historicalDataUpdate]
+    def historicalDataUpdate(self, reqId: int, bar: BarData):
+        print("HistoricalDataUpdate. ReqId:", reqId, "BarData.", bar)
+    # ! [historicalDataUpdate]
 
 def main():
     SetupLogger()
@@ -91,7 +120,7 @@ def main():
         app = TestApp()
         # 127.0.0.1 119.29.185.247
         # TEST 4002, PROD 4001
-        app.connect("127.0.0.1", 4002, clientId=0)
+        app.connect("119.29.185.247", 4002, clientId=0)
 
         app.run()
     except:

@@ -8,7 +8,7 @@ class ContractSamples:
         contract.secType = "STK"
         contract.currency = "USD"
         contract.exchange = "SMART"
-        contract.primaryExchange = "ISLAND"
+        #contract.primaryExchange = "ISLAND"
         return contract
 
     @staticmethod
@@ -30,7 +30,7 @@ class ContractSamples:
         contract.secType = "STK"
         contract.currency = "USD"
         contract.exchange = "SMART"
-        contract.primaryExchange = "ISLAND"
+        #contract.primaryExchange = "ISLAND"
         return contract
 
     @staticmethod
@@ -40,5 +40,14 @@ class ContractSamples:
         contract.secType = "STK"
         contract.currency = "USD"
         contract.exchange = "SMART"
-        contract.primaryExchange = "ISLAND"
+        #contract.primaryExchange = "ISLAND"
+        return contract
+    
+    @staticmethod
+    def StockGOOG():
+        contract = Contract()
+        contract.symbol = "GOOG"
+        contract.secType = "STK"
+        contract.currency = "USD"
+        contract.exchange = "SMART"
         return contract
