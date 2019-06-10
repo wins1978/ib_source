@@ -1,0 +1,24 @@
+(MainThread) 190611_00:02:52.305 INFO main.py:93 STARTING IB...
+(MainThread) 190611_00:02:52.315 INFO client.py:178 sent startApi
+(MainThread) 190611_00:02:52.315 INFO client.py:88 REQUEST startApi {}
+(MainThread) 190611_00:02:52.315 INFO client.py:77 SENDING startApi b'\x00\x00\x00\x0871\x002\x000\x00\x00'
+(MainThread) 190611_00:02:52.317 INFO wrapper.py:48 ANSWER managedAccounts {'accountsList': 'U8071180'}
+(MainThread) 190611_00:02:52.318 INFO wrapper.py:48 ANSWER nextValidId {'orderId': 60}
+(MainThread) 190611_00:02:52.319 INFO client.py:88 REQUEST reqHistoricalTicks {'reqId': 18003, 'contract': 2686940518160: 0,GOOG,STK,,0.0,,,SMART,ISLAND,USD,,,False,,combo:, 'startDateTime': '20160712 21:39:33', 'endDateTime': '', 'numberOfTicks': 1, 'whatToShow': 'MIDPOINT', 'useRth': 1, 'ignoreSize': True, 'miscOptions': []}
+(MainThread) 190611_00:02:52.320 INFO client.py:77 SENDING reqHistoricalTicks b'\x00\x00\x00S96\x0018003\x000\x00GOOG\x00STK\x00\x000.0\x00\x00\x00SMART\x00ISLAND\x00USD\x00\x00\x000\x0020160712 21:39:33\x00\x001\x00MIDPOINT\x001\x001\x00\x00'
+(MainThread) 190611_00:02:52.321 INFO wrapper.py:48 ANSWER error {'reqId': -1, 'errorCode': 2104, 'errorString': 'Market data farm connection is OK:usfarm'}
+(MainThread) 190611_00:02:52.321 ERROR wrapper.py:56 ERROR -1 2104 Market data farm connection is OK:usfarm
+(MainThread) 190611_00:02:52.322 INFO wrapper.py:48 ANSWER error {'reqId': -1, 'errorCode': 2106, 'errorString': 'HMDS data farm connection is OK:ushmds'}
+(MainThread) 190611_00:02:52.322 ERROR wrapper.py:56 ERROR -1 2106 HMDS data farm connection is OK:ushmds
+(MainThread) 190611_00:02:52.728 INFO client.py:196 disconnecting
+(Thread-6) 190611_00:02:52.729 ERROR reader.py:52 unhandled exception in EReader thread
+Traceback (most recent call last):
+  File "E:\IB\ib_source\ibcollecthistory\ibapi\reader.py", line 34, in run
+    data = self.conn.recvMsg()
+  File "E:\IB\ib_source\ibcollecthistory\ibapi\connection.py", line 99, in recvMsg
+    buf = self._recvAllMsg()
+  File "E:\IB\ib_source\ibcollecthistory\ibapi\connection.py", line 119, in _recvAllMsg
+    buf = self.socket.recv(4096)
+OSError: [WinError 10038] 在一个非套接字上尝试了一个操作。
+(MainThread) 190611_00:02:52.730 INFO wrapper.py:48 ANSWER connectionClosed {}
+(MainThread) 190611_00:02:52.733 ERROR main.py:105 END

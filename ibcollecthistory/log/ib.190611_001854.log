@@ -1,0 +1,20 @@
+(MainThread) 190611_00:18:54.136 INFO main.py:120 STARTING IB...
+(MainThread) 190611_00:18:54.146 INFO client.py:178 sent startApi
+(MainThread) 190611_00:18:54.147 INFO client.py:88 REQUEST startApi {}
+(MainThread) 190611_00:18:54.147 INFO client.py:77 SENDING startApi b'\x00\x00\x00\x0871\x002\x000\x00\x00'
+(MainThread) 190611_00:18:54.149 INFO wrapper.py:48 ANSWER managedAccounts {'accountsList': 'U8071180'}
+(MainThread) 190611_00:18:54.149 INFO wrapper.py:48 ANSWER nextValidId {'orderId': 60}
+(MainThread) 190611_00:18:54.151 INFO client.py:88 REQUEST reqHistoricalData {'reqId': 4102, 'contract': 1364071749056: 0,GOOG,STK,,0.0,,,SMART,ISLAND,USD,,,False,,combo:, 'endDateTime': '20181213 00:18:54', 'durationStr': '1 M', 'barSizeSetting': '1 day', 'whatToShow': 'MIDPOINT', 'useRTH': 1, 'formatDate': 1, 'keepUpToDate': False, 'chartOptions': []}
+(MainThread) 190611_00:18:54.152 INFO client.py:77 SENDING reqHistoricalData b'\x00\x00\x00[20\x004102\x000\x00GOOG\x00STK\x00\x000.0\x00\x00\x00SMART\x00ISLAND\x00USD\x00\x00\x000\x0020181213 00:18:54\x001 day\x001 M\x001\x00MIDPOINT\x001\x000\x00\x00'
+(MainThread) 190611_00:18:54.153 INFO client.py:196 disconnecting
+(Thread-6) 190611_00:18:54.153 ERROR reader.py:52 unhandled exception in EReader thread
+Traceback (most recent call last):
+  File "E:\IB\ib_source\ibcollecthistory\ibapi\reader.py", line 34, in run
+    data = self.conn.recvMsg()
+  File "E:\IB\ib_source\ibcollecthistory\ibapi\connection.py", line 99, in recvMsg
+    buf = self._recvAllMsg()
+  File "E:\IB\ib_source\ibcollecthistory\ibapi\connection.py", line 119, in _recvAllMsg
+    buf = self.socket.recv(4096)
+OSError: [WinError 10038] 在一个非套接字上尝试了一个操作。
+(MainThread) 190611_00:18:54.154 INFO wrapper.py:48 ANSWER connectionClosed {}
+(MainThread) 190611_00:18:54.156 ERROR main.py:132 END

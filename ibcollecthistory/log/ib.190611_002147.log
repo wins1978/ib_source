@@ -1,0 +1,13 @@
+(MainThread) 190611_00:21:47.490 INFO main.py:95 STARTING IB...
+(MainThread) 190611_00:21:47.500 INFO client.py:178 sent startApi
+(MainThread) 190611_00:21:47.500 INFO client.py:88 REQUEST startApi {}
+(MainThread) 190611_00:21:47.500 INFO client.py:77 SENDING startApi b'\x00\x00\x00\x0871\x002\x000\x00\x00'
+(MainThread) 190611_00:21:47.502 INFO wrapper.py:48 ANSWER managedAccounts {'accountsList': 'U8071180'}
+(MainThread) 190611_00:21:47.503 INFO wrapper.py:48 ANSWER nextValidId {'orderId': 60}
+(MainThread) 190611_00:21:47.505 INFO client.py:88 REQUEST reqHistoricalData {'reqId': 4102, 'contract': 2910650642048: 0,GOOG,STK,,0.0,,,SMART,ISLAND,USD,,,False,,combo:, 'endDateTime': '20190610 00:21:47', 'durationStr': '1 M', 'barSizeSetting': '1 day', 'whatToShow': 'MIDPOINT', 'useRTH': 1, 'formatDate': 1, 'keepUpToDate': False, 'chartOptions': []}
+(MainThread) 190611_00:21:47.506 INFO client.py:77 SENDING reqHistoricalData b'\x00\x00\x00[20\x004102\x000\x00GOOG\x00STK\x00\x000.0\x00\x00\x00SMART\x00ISLAND\x00USD\x00\x00\x000\x0020190610 00:21:47\x001 day\x001 M\x001\x00MIDPOINT\x001\x000\x00\x00'
+(MainThread) 190611_00:21:47.506 INFO wrapper.py:48 ANSWER error {'reqId': -1, 'errorCode': 2104, 'errorString': 'Market data farm connection is OK:usfarm'}
+(MainThread) 190611_00:21:47.507 ERROR wrapper.py:56 ERROR -1 2104 Market data farm connection is OK:usfarm
+(MainThread) 190611_00:21:47.507 INFO wrapper.py:48 ANSWER error {'reqId': -1, 'errorCode': 2106, 'errorString': 'HMDS data farm connection is OK:ushmds'}
+(MainThread) 190611_00:21:47.508 ERROR wrapper.py:56 ERROR -1 2106 HMDS data farm connection is OK:ushmds
+(MainThread) 190611_00:21:47.943 INFO wrapper.py:48 ANSWER historicalDataEnd {'reqId': 4102, 'start': '20190510  00:21:47', 'end': '20190610  00:21:47'}
