@@ -1,7 +1,7 @@
 from peewee import *
 import settings
 
-class Vendor(Model):
+class HistoricalDataByDay(Model):
     id = AutoField()
     vendor_name = CharField()
     tel = CharField()
@@ -11,6 +11,6 @@ class Vendor(Model):
     is_valid = CharField()
 
     class Meta:
-        table_name = 'vendor'
+        table_name = 'historical_data_byday'
     class Meta:
         database = settings.db

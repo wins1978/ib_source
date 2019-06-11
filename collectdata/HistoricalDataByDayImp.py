@@ -1,0 +1,2 @@
+class HistoricalDataByDayImp:
+    def con

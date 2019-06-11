@@ -6,7 +6,6 @@ from Common import *
 import settings
 settings.init()
 
-from model.Vendor import *
 from PikaMQ import *
 
 # Connect to the database URL defined in the environment, falling

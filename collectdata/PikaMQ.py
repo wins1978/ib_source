@@ -16,7 +16,10 @@ class PikaMQ:
         self.channel.start_consuming()
 
     def callback(self,ch, method, properties, body):
-        print(" [x] Received %r" % body)
+        msg = body.decode()
+        arr = msg.split(",")
+        for item in arr:
+            print(item.strip())
 
     def stop_consuming(self):
         self.channel.stop_consuming('ib_historical_data_byday')
