@@ -1,4 +1,5 @@
 import pika
+import json
 
 class PikaMQ:
     def __init__(self):
@@ -8,11 +9,10 @@ class PikaMQ:
         self.channel = self.mq_conn.channel()
         self.channel.queue_declare(queue='ib_historical_data_byday')
 
-    def send(msg):
-        print("============="+msg)
+    def send(self,msg):
         self.channel.basic_publish(exchange='', routing_key='ib_historical_data_byday', body=msg)
 
-    def close():
+    def close(self):
         print("closing mq")
         self.mq_conn.close()
 

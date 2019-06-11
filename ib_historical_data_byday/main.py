@@ -1,7 +1,6 @@
 import datetime
 import collections
 import inspect
-import json
 from Common import *
 
 from ibapi import wrapper
@@ -69,8 +68,8 @@ class TestApp(TestWrapper, TestClient):
     # ! [historicaldata]
     def historicalData(self, reqId:int, bar: BarData):
         print("HistoricalData. ReqId:", reqId, "BarData.", bar)
-        msg = json.dumps(bar)
-        self.mq.send(bar)
+        msg = "ReqType: HistoricalData, ReqId: " +str(reqId) +", " + str(bar)
+        self.mq.send(msg)
     # ! [historicaldata]
 
     @iswrapper
@@ -78,7 +77,7 @@ class TestApp(TestWrapper, TestClient):
     def historicalDataEnd(self, reqId: int, start: str, end: str):
         super().historicalDataEnd(reqId, start, end)
         print("HistoricalDataEnd. ReqId:", reqId, "from", start, "to", end)
-        msg = json.dumps(reqId)
+        msg = "ReqType: HistoricalDataEnd, ReqId: " +str(reqId)
         self.mq.send(msg)
     # ! [historicaldataend]
 

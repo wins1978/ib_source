@@ -1,3 +1,4 @@
+import os
 from peewee import *
 from playhouse.db_url import connect
 
