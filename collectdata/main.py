@@ -2,11 +2,11 @@ import os
 
 from peewee import *
 from playhouse.db_url import connect
-from Common import *
+from common import *
 import settings
 settings.init()
 
-from PikaMQ import *
+from pika_mq import *
 
 # Connect to the database URL defined in the environment, falling
 # back to a local Sqlite database if no database URL is specified.
