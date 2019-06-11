@@ -1,5 +1,4 @@
 import pika
-import json
 
 class PikaMQ:
     def __init__(self):

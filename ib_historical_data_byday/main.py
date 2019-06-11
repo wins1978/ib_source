@@ -1,7 +1,7 @@
 import datetime
 import collections
 import inspect
-from Common import *
+from common import *
 
 from ibapi import wrapper
 from ibapi import utils
@@ -22,10 +22,10 @@ from ibapi.tag_value import TagValue
 from ibapi.account_summary_tags import *
 from ibapi.scanner import ScanData
 
-from TestClient import *
-from TestWrapper import *
-from ContractSamples import *
-from PikaMQ import *
+from test_client import *
+from test_wrapper import *
+from contract import *
+from pika_mq import *
 
 
 class TestApp(TestWrapper, TestClient):
