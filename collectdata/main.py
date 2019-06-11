@@ -2,16 +2,18 @@ import os
 
 from peewee import *
 from playhouse.db_url import connect
-import model.Vendor
-from conn.db import *
+import settings
+from model.Vendor import *
 
 # Connect to the database URL defined in the environment, falling
 # back to a local Sqlite database if no database URL is specified.
 # mysql://user:passwd@ip:port/my_db
 
-def main():
-    db.connect()
 
+def main():
+    settings.init()
+    settings.db.connect()
+    
     Vendor.insert({
        Vendor.id:0,
        Vendor.contact_name : "contact_name1",

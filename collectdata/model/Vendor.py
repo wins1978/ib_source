@@ -1,5 +1,5 @@
 from peewee import *
-import conn.db
+import settings
 
 class Vendor(Model):
     id = AutoField()
@@ -13,4 +13,4 @@ class Vendor(Model):
     class Meta:
         table_name = 'vendor'
     class Meta:
-        database = db
+        database = settings.db

@@ -1,0 +1,98 @@
+(MainThread) 190608_00:40:30.787 INFO iborder.py:101 STARTING IB...
+(MainThread) 190608_00:40:30.798 INFO client.py:178 sent startApi
+(MainThread) 190608_00:40:30.798 INFO client.py:88 REQUEST startApi {}
+(MainThread) 190608_00:40:30.798 INFO client.py:77 SENDING startApi b'\x00\x00\x00\x0871\x002\x000\x00\x00'
+(MainThread) 190608_00:40:30.800 INFO wrapper.py:48 ANSWER managedAccounts {'accountsList': 'DU1502805'}
+(MainThread) 190608_00:40:30.800 INFO wrapper.py:48 ANSWER nextValidId {'orderId': 1}
+(MainThread) 190608_00:40:30.802 INFO client.py:88 REQUEST reqMarketDataType {'marketDataType': 4}
+(MainThread) 190608_00:40:30.802 INFO client.py:77 SENDING reqMarketDataType b'\x00\x00\x00\x0759\x001\x004\x00'
+(MainThread) 190608_00:40:30.803 INFO client.py:88 REQUEST reqMktData {'reqId': 1000, 'contract': 1424166644592: 0,XNET,STK,,0.0,,,SMART,ISLAND,USD,,,False,,combo:, 'genericTickList': '', 'snapshot': False, 'regulatorySnapshot': False, 'mktDataOptions': []}
+(MainThread) 190608_00:40:30.803 INFO client.py:77 SENDING reqMktData b'\x00\x00\x0071\x0011\x001000\x000\x00XNET\x00STK\x00\x000.0\x00\x00\x00SMART\x00ISLAND\x00USD\x00\x00\x000\x00\x000\x000\x00\x00'
+(MainThread) 190608_00:40:30.803 INFO client.py:88 REQUEST reqMktData {'reqId': 1001, 'contract': 1424166644592: 0,WB,STK,,0.0,,,SMART,ISLAND,USD,,,False,,combo:, 'genericTickList': '', 'snapshot': False, 'regulatorySnapshot': False, 'mktDataOptions': []}
+(MainThread) 190608_00:40:30.804 INFO client.py:77 SENDING reqMktData b'\x00\x00\x0051\x0011\x001001\x000\x00WB\x00STK\x00\x000.0\x00\x00\x00SMART\x00ISLAND\x00USD\x00\x00\x000\x00\x000\x000\x00\x00'
+(MainThread) 190608_00:40:30.804 INFO client.py:88 REQUEST reqMktData {'reqId': 1002, 'contract': 1424166644592: 0,TQQQ,STK,,0.0,,,SMART,ISLAND,USD,,,False,,combo:, 'genericTickList': '', 'snapshot': False, 'regulatorySnapshot': False, 'mktDataOptions': []}
+(MainThread) 190608_00:40:30.804 INFO client.py:77 SENDING reqMktData b'\x00\x00\x0071\x0011\x001002\x000\x00TQQQ\x00STK\x00\x000.0\x00\x00\x00SMART\x00ISLAND\x00USD\x00\x00\x000\x00\x000\x000\x00\x00'
+(MainThread) 190608_00:40:30.805 INFO client.py:88 REQUEST reqMktData {'reqId': 1003, 'contract': 1424166644592: 0,MSFT,STK,,0.0,,,SMART,ISLAND,USD,,,False,,combo:, 'genericTickList': '', 'snapshot': False, 'regulatorySnapshot': False, 'mktDataOptions': []}
+(MainThread) 190608_00:40:30.805 INFO client.py:77 SENDING reqMktData b'\x00\x00\x0071\x0011\x001003\x000\x00MSFT\x00STK\x00\x000.0\x00\x00\x00SMART\x00ISLAND\x00USD\x00\x00\x000\x00\x000\x000\x00\x00'
+(MainThread) 190608_00:40:30.805 INFO wrapper.py:48 ANSWER error {'reqId': -1, 'errorCode': 2104, 'errorString': 'Market data farm connection is OK:usfarm'}
+(MainThread) 190608_00:40:30.805 ERROR wrapper.py:56 ERROR -1 2104 Market data farm connection is OK:usfarm
+(MainThread) 190608_00:40:30.806 INFO wrapper.py:48 ANSWER error {'reqId': -1, 'errorCode': 2106, 'errorString': 'HMDS data farm connection is OK:ushmds'}
+(MainThread) 190608_00:40:30.806 ERROR wrapper.py:56 ERROR -1 2106 HMDS data farm connection is OK:ushmds
+(MainThread) 190608_00:40:31.134 INFO wrapper.py:48 ANSWER tickReqParams {'tickerId': 1000, 'minTick': 0.01, 'bboExchange': '9c', 'snapshotPermissions': 1}
+(MainThread) 190608_00:40:31.135 INFO wrapper.py:48 ANSWER marketDataType {'reqId': 1000, 'marketDataType': 3}
+(MainThread) 190608_00:40:31.136 INFO wrapper.py:48 ANSWER error {'reqId': 1000, 'errorCode': 10167, 'errorString': 'Requested market data is not subscribed. Displaying delayed market data...'}
+(MainThread) 190608_00:40:31.136 ERROR wrapper.py:56 ERROR 1000 10167 Requested market data is not subscribed. Displaying delayed market data...
+(MainThread) 190608_00:40:31.385 INFO wrapper.py:48 ANSWER tickReqParams {'tickerId': 1001, 'minTick': 0.01, 'bboExchange': '9c', 'snapshotPermissions': 1}
+(MainThread) 190608_00:40:31.387 INFO wrapper.py:48 ANSWER tickReqParams {'tickerId': 1002, 'minTick': 0.01, 'bboExchange': '9c', 'snapshotPermissions': 1}
+(MainThread) 190608_00:40:31.388 INFO wrapper.py:48 ANSWER tickReqParams {'tickerId': 1003, 'minTick': 0.01, 'bboExchange': '9c', 'snapshotPermissions': 1}
+(MainThread) 190608_00:40:31.390 INFO wrapper.py:48 ANSWER marketDataType {'reqId': 1001, 'marketDataType': 3}
+(MainThread) 190608_00:40:31.391 INFO wrapper.py:48 ANSWER error {'reqId': 1001, 'errorCode': 10167, 'errorString': 'Requested market data is not subscribed. Displaying delayed market data...'}
+(MainThread) 190608_00:40:31.391 ERROR wrapper.py:56 ERROR 1001 10167 Requested market data is not subscribed. Displaying delayed market data...
+(MainThread) 190608_00:40:31.392 INFO wrapper.py:48 ANSWER marketDataType {'reqId': 1002, 'marketDataType': 3}
+(MainThread) 190608_00:40:31.393 INFO wrapper.py:48 ANSWER error {'reqId': 1002, 'errorCode': 10167, 'errorString': 'Requested market data is not subscribed. Displaying delayed market data...'}
+(MainThread) 190608_00:40:31.393 ERROR wrapper.py:56 ERROR 1002 10167 Requested market data is not subscribed. Displaying delayed market data...
+(MainThread) 190608_00:40:31.394 INFO wrapper.py:48 ANSWER marketDataType {'reqId': 1003, 'marketDataType': 3}
+(MainThread) 190608_00:40:31.395 INFO wrapper.py:48 ANSWER error {'reqId': 1003, 'errorCode': 10167, 'errorString': 'Requested market data is not subscribed. Displaying delayed market data...'}
+(MainThread) 190608_00:40:31.395 ERROR wrapper.py:56 ERROR 1003 10167 Requested market data is not subscribed. Displaying delayed market data...
+(MainThread) 190608_00:40:31.806 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1000, 'tickType': 68, 'price': 2.14, 'attrib': 1424166643976: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:31.813 INFO wrapper.py:48 ANSWER tickSize {'reqId': 1000, 'tickType': 71, 'size': 1}
+(MainThread) 190608_00:40:31.814 INFO wrapper.py:48 ANSWER tickString {'reqId': 1000, 'tickType': 88, 'value': '1559924768'}
+(MainThread) 190608_00:40:31.815 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1000, 'tickType': 72, 'price': 2.15, 'attrib': 1424166643976: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:31.818 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1000, 'tickType': 73, 'price': 1.99, 'attrib': 1424166644200: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:31.821 INFO wrapper.py:48 ANSWER tickSize {'reqId': 1000, 'tickType': 74, 'size': 3471}
+(MainThread) 190608_00:40:31.822 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1000, 'tickType': 75, 'price': 2.14, 'attrib': 1424166645488: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:31.826 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1000, 'tickType': 66, 'price': 2.13, 'attrib': 1424166645600: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:31.828 INFO wrapper.py:48 ANSWER tickSize {'reqId': 1000, 'tickType': 69, 'size': 23}
+(MainThread) 190608_00:40:31.829 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1000, 'tickType': 67, 'price': 2.14, 'attrib': 1424166645656: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:31.832 INFO wrapper.py:48 ANSWER tickSize {'reqId': 1000, 'tickType': 70, 'size': 11}
+(MainThread) 190608_00:40:31.833 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1002, 'tickType': 68, 'price': 56.39, 'attrib': 1424166645432: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:31.835 INFO wrapper.py:48 ANSWER tickSize {'reqId': 1002, 'tickType': 71, 'size': 2}
+(MainThread) 190608_00:40:31.836 INFO wrapper.py:48 ANSWER tickString {'reqId': 1002, 'tickType': 88, 'value': '1559924817'}
+(MainThread) 190608_00:40:31.837 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1002, 'tickType': 72, 'price': 56.92, 'attrib': 1424166817864: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:31.838 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1002, 'tickType': 73, 'price': 53.82, 'attrib': 1424166817920: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:31.840 INFO wrapper.py:48 ANSWER tickSize {'reqId': 1002, 'tickType': 74, 'size': 140136}
+(MainThread) 190608_00:40:31.841 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1002, 'tickType': 75, 'price': 53.14, 'attrib': 1424166818032: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:31.843 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1002, 'tickType': 76, 'price': 0.0, 'attrib': 1424166818144: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:31.843 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1003, 'tickType': 66, 'price': 131.55, 'attrib': 1424166818256: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:31.845 INFO wrapper.py:48 ANSWER tickSize {'reqId': 1003, 'tickType': 69, 'size': 25}
+(MainThread) 190608_00:40:31.845 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1003, 'tickType': 67, 'price': 131.56, 'attrib': 1424166818256: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:31.848 INFO wrapper.py:48 ANSWER tickSize {'reqId': 1003, 'tickType': 70, 'size': 1}
+(MainThread) 190608_00:40:31.848 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1003, 'tickType': 68, 'price': 131.55, 'attrib': 1424166818312: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:31.850 INFO wrapper.py:48 ANSWER tickSize {'reqId': 1003, 'tickType': 71, 'size': 1}
+(MainThread) 190608_00:40:31.850 INFO wrapper.py:48 ANSWER tickString {'reqId': 1003, 'tickType': 88, 'value': '1559924809'}
+(MainThread) 190608_00:40:31.850 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1003, 'tickType': 72, 'price': 132.25, 'attrib': 1424166818312: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:31.852 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1003, 'tickType': 73, 'price': 128.26, 'attrib': 1424166818536: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:31.854 INFO wrapper.py:48 ANSWER tickSize {'reqId': 1003, 'tickType': 74, 'size': 186143}
+(MainThread) 190608_00:40:31.854 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1003, 'tickType': 75, 'price': 127.82, 'attrib': 1424166818648: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:31.856 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1003, 'tickType': 76, 'price': 0.0, 'attrib': 1424166818704: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:31.856 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1001, 'tickType': 68, 'price': 42.69, 'attrib': 1424166818760: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:31.858 INFO wrapper.py:48 ANSWER tickSize {'reqId': 1001, 'tickType': 71, 'size': 4}
+(MainThread) 190608_00:40:31.859 INFO wrapper.py:48 ANSWER tickString {'reqId': 1001, 'tickType': 88, 'value': '1559924812'}
+(MainThread) 190608_00:40:31.859 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1001, 'tickType': 72, 'price': 42.74, 'attrib': 1424166818760: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:31.861 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1001, 'tickType': 73, 'price': 41.64, 'attrib': 1424166818816: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:31.863 INFO wrapper.py:48 ANSWER tickSize {'reqId': 1001, 'tickType': 74, 'size': 11566}
+(MainThread) 190608_00:40:31.863 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1001, 'tickType': 75, 'price': 41.25, 'attrib': 1424166818984: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:31.865 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1001, 'tickType': 66, 'price': 42.68, 'attrib': 1424166819040: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:31.867 INFO wrapper.py:48 ANSWER tickSize {'reqId': 1001, 'tickType': 69, 'size': 9}
+(MainThread) 190608_00:40:31.867 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1001, 'tickType': 67, 'price': 42.72, 'attrib': 1424166819096: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:31.868 INFO wrapper.py:48 ANSWER tickSize {'reqId': 1001, 'tickType': 70, 'size': 3}
+(MainThread) 190608_00:40:31.868 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1002, 'tickType': 66, 'price': 56.39, 'attrib': 1424166819152: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:31.870 INFO wrapper.py:48 ANSWER tickSize {'reqId': 1002, 'tickType': 69, 'size': 19}
+(MainThread) 190608_00:40:31.870 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1002, 'tickType': 67, 'price': 56.4, 'attrib': 1424166819208: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:31.872 INFO wrapper.py:48 ANSWER tickSize {'reqId': 1002, 'tickType': 70, 'size': 7}
+(MainThread) 190608_00:40:32.666 INFO wrapper.py:48 ANSWER tickSize {'reqId': 1003, 'tickType': 74, 'size': 186367}
+(MainThread) 190608_00:40:33.667 INFO wrapper.py:48 ANSWER tickString {'reqId': 1003, 'tickType': 88, 'value': '1559924819'}
+(MainThread) 190608_00:40:33.669 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1002, 'tickType': 66, 'price': 56.38, 'attrib': 1424166898768: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:33.675 INFO wrapper.py:48 ANSWER tickSize {'reqId': 1002, 'tickType': 69, 'size': 5}
+(MainThread) 190608_00:40:33.677 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1002, 'tickType': 67, 'price': 56.39, 'attrib': 1424166899216: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:33.683 INFO wrapper.py:48 ANSWER tickSize {'reqId': 1002, 'tickType': 70, 'size': 7}
+(MainThread) 190608_00:40:33.684 INFO wrapper.py:48 ANSWER tickSize {'reqId': 1003, 'tickType': 69, 'size': 6}
+(MainThread) 190608_00:40:33.685 INFO wrapper.py:48 ANSWER tickSize {'reqId': 1003, 'tickType': 70, 'size': 23}
+(MainThread) 190608_00:40:33.687 INFO wrapper.py:48 ANSWER tickSize {'reqId': 1000, 'tickType': 70, 'size': 13}
+(MainThread) 190608_00:40:33.688 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1001, 'tickType': 66, 'price': 42.69, 'attrib': 1424166899216: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:33.694 INFO wrapper.py:48 ANSWER tickSize {'reqId': 1001, 'tickType': 69, 'size': 1}
+(MainThread) 190608_00:40:33.695 INFO wrapper.py:48 ANSWER tickSize {'reqId': 1001, 'tickType': 70, 'size': 1}
+(MainThread) 190608_00:40:34.668 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1001, 'tickType': 66, 'price': 42.68, 'attrib': 1424166899048: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:34.673 INFO wrapper.py:48 ANSWER tickSize {'reqId': 1001, 'tickType': 69, 'size': 9}
+(MainThread) 190608_00:40:35.670 INFO wrapper.py:48 ANSWER tickPrice {'reqId': 1000, 'tickType': 76, 'price': 0.0, 'attrib': 1424166897872: CanAutoExecute: 0, PastLimit: 0, PreOpen: 0}
+(MainThread) 190608_00:40:35.672 INFO wrapper.py:48 ANSWER tickSize {'reqId': 1001, 'tickType': 74, 'size': 11572}

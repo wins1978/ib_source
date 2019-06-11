@@ -1,0 +1,18 @@
+import pika
+
+class PikaMQ:
+    def __init__(self):
+        print("init mq...")
+        self.mq_conn = pika.BlockingConnection(
+            pika.ConnectionParameters(host='localhost'))
+        self.channel = self.mq_conn.channel()
+        self.channel.queue_declare(queue='ib_historical_data_byday')
+
+    def send(msg):
+        print("============="+msg)
+        self.channel.basic_publish(exchange='', routing_key='ib_historical_data_byday', body=msg)
+
+    def close():
+        print("closing mq")
+        self.mq_conn.close()
+
