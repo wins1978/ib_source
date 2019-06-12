@@ -3,12 +3,14 @@ import settings
 
 class HistoricalDataByDay(Model):
     id = AutoField()
-    vendor_name = CharField()
-    tel = CharField()
-    contact_name = CharField()
-    cost_alert = BitField()
-    need_cost_advance = CharField()
-    is_valid = CharField()
+    symbol = CharField()
+    req_id = IntegerField()
+    stock_time = DateField()
+    stock_time_str = CharField()
+    open_pri = DecimalField()
+    high_pri = DecimalField()
+    low_pri = DecimalField()
+    close_pri = DecimalField()
 
     class Meta:
         table_name = 'historical_data_byday'

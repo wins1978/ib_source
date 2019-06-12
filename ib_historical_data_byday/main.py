@@ -77,8 +77,8 @@ class TestApp(TestWrapper, TestClient):
     def historicalDataEnd(self, reqId: int, start: str, end: str):
         super().historicalDataEnd(reqId, start, end)
         print("HistoricalDataEnd. ReqId:", reqId, "from", start, "to", end)
-        msg = "ReqType: HistoricalDataEnd, ReqId: " +str(reqId)
-        self.mq.send(msg)
+        # msg = "ReqType: HistoricalDataEnd, ReqId: " +str(reqId)
+        # self.mq.send(msg)
     # ! [historicaldataend]
 
     @iswrapper

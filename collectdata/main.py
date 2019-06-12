@@ -23,7 +23,9 @@ def main():
     except:
         raise
     finally:
+        print("close db and mq at END")
         mq.stop_consuming()
+        settings.db.close()
         logging.error("END")
 
     
