@@ -6,7 +6,7 @@ def SetupLogger():
     if not os.path.exists("log"):
         os.makedirs("log")
 
-    time.strftime("pyibapi.%Y%m%d_%H%M%S.log")
+    time.strftime("pyibapi.%Y%m%d.log")
 
     recfmt = '(%(threadName)s) %(asctime)s.%(msecs)03d %(levelname)s %(filename)s:%(lineno)d %(message)s'
 

@@ -1,6 +1,8 @@
 import datetime
 import collections
 import inspect
+import sys
+import time
 from common import *
 
 from ibapi import wrapper
@@ -27,15 +29,20 @@ from test_wrapper import *
 from contract import *
 from pika_mq import *
 
+def printinstance(inst:Object):
+    attrs = vars(inst)
+    print(', '.join("%s: %s" % item for item in attrs.items()))
 
 class TestApp(TestWrapper, TestClient):
-    def __init__(self):
+    def __init__(self,bizType):
         TestWrapper.__init__(self)
         TestClient.__init__(self, wrapper=self)
 
+        self.bizType = bizType
         self.started = False
         self.nextValidOrderId = None
 
+        print("STARTING ..." + self.bizType)    
 
     @iswrapper
     def connectAck(self):
@@ -56,12 +63,59 @@ class TestApp(TestWrapper, TestClient):
             return
         self.started = True
         self.mq = PikaMQ()
-        self.monitoringHistoricalDataByDay()
+        if self.bizType == "list_contract":
+            self.contractOperations()
+        elif self.bizType == "byday":
+            self.monitoringHistoricalDataByDay()
+        else :
+            print("ERROR bizType")
+
+    # ======================================================
+    # There must be an interval of at least 1 second between successive calls to reqMatchingSymbols
+    def contractOperations(self):
+        # ! [reqmatchingsymbols]
+        names = GetSymbolName()
+        idx = 1
+        for key in names:
+            self.reqMatchingSymbols(200000 + idx, key)
+            idx = idx + 1
+            time.sleep(2)
+        # for i in range(ord("A"),ord("Z")+1):
+        #     key = chr(i)
+        #     print(key)
+        #     self.reqMatchingSymbols(200000 + int(i), key)
+        #     time.sleep(2)
+        # ! [reqmatchingsymbols]
+
+    @iswrapper
+    # ! [symbolSamples]
+    def symbolSamples(self, reqId: int,
+                      contractDescriptions: ListOfContractDescription):
+        super().symbolSamples(reqId, contractDescriptions)
+        print("Symbol Samples. Request Id: ", reqId)
+
+        for contractDescription in contractDescriptions:
+            logging.info("----"+contractDescription.contract.symbol)
+            derivSecTypes = ""
+            for derivSecType in contractDescription.derivativeSecTypes:
+                derivSecTypes += derivSecType
+                derivSecTypes += " "
+            print("Contract: conId:%s, symbol:%s, secType:%s primExchange:%s, "
+                  "currency:%s, derivativeSecTypes:%s" % (
+                contractDescription.contract.conId,
+                contractDescription.contract.symbol,
+                contractDescription.contract.secType,
+                contractDescription.contract.primaryExchange,
+                contractDescription.contract.currency, derivSecTypes))
+    # ! [symbolSamples]
+    # ======================================================
+
 
     def monitoringHistoricalDataByDay(self):
         # ! [reqhistoricaldata]
         queryTime = (datetime.datetime.today() - datetime.timedelta(days=180)).strftime("%Y%m%d %H:%M:%S")
-        self.reqHistoricalData(400000, ContractSamples.StockGOOG(), "","1 M", "1 day", "MIDPOINT", 1, 1, True, [])
+        print(queryTime)
+        self.reqHistoricalData(400000, ContractSamples.StockGOOG(), queryTime,"2 M", "1 day", "MIDPOINT", 1, 1, False, [])
         # ! [reqhistoricaldata]
 
     @iswrapper
@@ -89,10 +143,14 @@ class TestApp(TestWrapper, TestClient):
 
 def main():
     SetupLogger()
-    logging.info("STARTING IB...")
+
+    businessType = sys.argv[1]
+    if businessType == "":
+        print("no businessType")
+        return
 
     try:
-        app = TestApp()
+        app = TestApp(businessType)
         # 127.0.0.1 119.29.185.247
         # TEST 4002, PROD 4001
         app.connect("119.29.185.247", 4001, clientId=0)

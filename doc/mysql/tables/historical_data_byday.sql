@@ -8,6 +8,7 @@ CREATE TABLE `historical_data_byday` (
   `high_pri` DOUBLE(10,2) DEFAULT NULL COMMENT '',
   `low_pri` DOUBLE(10,2) DEFAULT NULL COMMENT '',
   `close_pri` DOUBLE(10,2) DEFAULT NULL COMMENT '',
+  `import_time` DATETIME DEFAULT NULL COMMENT '',
   PRIMARY KEY (`id`),
   UNIQUE INDEX `historical_data_byday_idx1` (`symbol`,`stock_time_str`),
   INDEX `historical_data_byday_idx2` (`stock_time`)

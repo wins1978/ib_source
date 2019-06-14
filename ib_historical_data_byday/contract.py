@@ -51,3 +51,13 @@ class ContractSamples:
         contract.currency = "USD"
         contract.exchange = "SMART"
         return contract
+
+    @staticmethod
+    def StockALL():
+        contract = Contract()
+        contract.currency = "USD"
+        contract.secType = "STK"
+        # contract.symbol = "GOOG"
+        contract.exchange = "SMART"
+        contract.primaryExchange = "ISLAND"
+        return contract
