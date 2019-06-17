@@ -5,6 +5,8 @@ import sys
 import threading
 import time
 from common import *
+import settings
+settings.init()
 
 from ibapi import wrapper
 from ibapi import utils
@@ -29,6 +31,8 @@ from test_client import *
 from test_wrapper import *
 from contract import *
 from pika_mq import *
+
+from model.basic_contract_random_name_task import BasicContractRandomNameTask
 
 def printinstance(inst:Object):
     attrs = vars(inst)
@@ -65,10 +69,10 @@ class TestApp(TestWrapper, TestClient):
         if self.started:
             return
         self.started = True
-        self.mq = PikaMQ()
-        if self.bizType == "list_contract":
-            self.contractOperations()
+        if self.bizType == "refresh_contract":
+            self.RefreshBasicContract()
         elif self.bizType == "by_day":
+            self.mq = PikaMQ()
             self.monitoringHistoricalDataByDay()
         else :
             print("ERROR bizType")
@@ -77,19 +81,21 @@ class TestApp(TestWrapper, TestClient):
     # Refresh Contract
     # =======================================================
     # There must be an interval of at least 1 second between successive calls to reqMatchingSymbols
-    def contractOperations(self):
+    def RefreshBasicContract(self):
         global contract_idx
         contract_idx = contract_idx +1
-        # check lock flag
+        # get lock flag
+        result = BasicContractRandomNameTask.get(BasicContractRandomNameTask.task_name = "SymbolRandom")
+        flag = result["task_status"]
+        print(flag)
+
         # get random names ...
         # loop
-        self.callContractMethod(200000 + contract_idx, "IBKR")
+        # self.callContractMethod(200000 + contract_idx, "IBKR")
         
         timer = threading.Timer(2,self.contractOperations)
         timer.start()
     
-    def callContractMethod(self,idx,name):
-        self.reqMatchingSymbols(idx, name)
 
     @iswrapper
     # ! [symbolSamples]
@@ -159,7 +165,8 @@ def main():
     except:
         raise
     finally:
-        app.mq.close()
+        if self.bizType == "by_day":
+            app.mq.close()
         logging.error("END")
 
 if __name__ == "__main__":
