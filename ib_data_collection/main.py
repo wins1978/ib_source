@@ -2,6 +2,7 @@ import datetime
 import collections
 import inspect
 import sys
+import threading
 import time
 from common import *
 
@@ -41,7 +42,9 @@ class TestApp(TestWrapper, TestClient):
         self.bizType = bizType
         self.started = False
         self.nextValidOrderId = None
-
+        
+        global contract_idx
+        contract_idx = 1
         print("STARTING ..." + self.bizType)    
 
     @iswrapper
@@ -65,27 +68,28 @@ class TestApp(TestWrapper, TestClient):
         self.mq = PikaMQ()
         if self.bizType == "list_contract":
             self.contractOperations()
-        elif self.bizType == "byday":
+        elif self.bizType == "by_day":
             self.monitoringHistoricalDataByDay()
         else :
             print("ERROR bizType")
 
-    # ======================================================
+    # =======================================================
+    # Refresh Contract
+    # =======================================================
     # There must be an interval of at least 1 second between successive calls to reqMatchingSymbols
     def contractOperations(self):
-        # ! [reqmatchingsymbols]
-        names = GetSymbolName()
-        idx = 1
-        for key in names:
-            self.reqMatchingSymbols(200000 + idx, key)
-            idx = idx + 1
-            time.sleep(2)
-        # for i in range(ord("A"),ord("Z")+1):
-        #     key = chr(i)
-        #     print(key)
-        #     self.reqMatchingSymbols(200000 + int(i), key)
-        #     time.sleep(2)
-        # ! [reqmatchingsymbols]
+        global contract_idx
+        contract_idx = contract_idx +1
+        # check lock flag
+        # get random names ...
+        # loop
+        self.callContractMethod(200000 + contract_idx, "IBKR")
+        
+        timer = threading.Timer(2,self.contractOperations)
+        timer.start()
+    
+    def callContractMethod(self,idx,name):
+        self.reqMatchingSymbols(idx, name)
 
     @iswrapper
     # ! [symbolSamples]
@@ -108,39 +112,35 @@ class TestApp(TestWrapper, TestClient):
                 contractDescription.contract.primaryExchange,
                 contractDescription.contract.currency, derivSecTypes))
     # ! [symbolSamples]
-    # ======================================================
-
-
+    
+    # =======================================================
+    # Refresh Historical Data
+    # =======================================================
     def monitoringHistoricalDataByDay(self):
-        # ! [reqhistoricaldata]
         queryTime = (datetime.datetime.today() - datetime.timedelta(days=180)).strftime("%Y%m%d %H:%M:%S")
         print(queryTime)
         self.reqHistoricalData(400000, ContractSamples.StockGOOG(), queryTime,"2 M", "1 day", "MIDPOINT", 1, 1, False, [])
-        # ! [reqhistoricaldata]
 
     @iswrapper
-    # ! [historicaldata]
     def historicalData(self, reqId:int, bar: BarData):
         print("HistoricalData. ReqId:", reqId, "BarData.", bar)
         msg = "ReqType: HistoricalData, ReqId: " +str(reqId) +", " + str(bar)
         self.mq.send(msg)
-    # ! [historicaldata]
 
     @iswrapper
-    # ! [historicaldataend]
     def historicalDataEnd(self, reqId: int, start: str, end: str):
         super().historicalDataEnd(reqId, start, end)
         print("HistoricalDataEnd. ReqId:", reqId, "from", start, "to", end)
         # msg = "ReqType: HistoricalDataEnd, ReqId: " +str(reqId)
         # self.mq.send(msg)
-    # ! [historicaldataend]
 
     @iswrapper
-    # ! [historicalDataUpdate]
     def historicalDataUpdate(self, reqId: int, bar: BarData):
         print("HistoricalDataUpdate. ReqId:", reqId, "BarData.", bar)
-    # ! [historicalDataUpdate]
 
+    # =======================================================
+    # Main
+    # =======================================================
 def main():
     SetupLogger()
 

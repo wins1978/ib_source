@@ -11,4 +11,4 @@ CREATE TABLE `basic_contract_info` (
   `create_time` DATETIME DEFAULT NULL COMMENT '',
   PRIMARY KEY (`id`),
   UNIQUE INDEX `basic_contract_info_idx1` (`symbol`)
-) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8; 
+) ENGINE=INNODB; 

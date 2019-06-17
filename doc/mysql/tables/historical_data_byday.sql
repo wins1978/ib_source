@@ -12,4 +12,4 @@ CREATE TABLE `historical_data_byday` (
   PRIMARY KEY (`id`),
   UNIQUE INDEX `historical_data_byday_idx1` (`symbol`,`stock_time_str`),
   INDEX `historical_data_byday_idx2` (`stock_time`)
-) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8; 
+) ENGINE=INNODB; 
