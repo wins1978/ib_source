@@ -14,7 +14,7 @@ def SetupLogger():
 
     # logging.basicConfig( level=logging.DEBUG,
     #                    format=recfmt, datefmt=timefmt)
-    logging.basicConfig(filename=time.strftime("log/ib.%y%m%d_%H%M%S.log"),
+    logging.basicConfig(filename=time.strftime("log/ib.%y%m%d_%H.log"),
                         filemode="w",
                         level=logging.INFO,
                         format=recfmt, datefmt=timefmt)

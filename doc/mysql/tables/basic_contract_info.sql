@@ -9,6 +9,8 @@ CREATE TABLE `basic_contract_info` (
   `disabled` VARCHAR(5) DEFAULT 'N' COMMENT 'Y/N',
   `publish_time` DATETIME DEFAULT NULL COMMENT 'new stock day',
   `create_time` DATETIME DEFAULT NULL COMMENT '',
+  `update_time` DATETIME DEFAULT NULL COMMENT '',
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `basic_contract_info_idx1` (`symbol`)
+  UNIQUE INDEX `basic_contract_info_idx1` (`symbol`),
+  INDEX `basic_contract_info_idx1` (`update_time`)
 ) ENGINE=INNODB; 

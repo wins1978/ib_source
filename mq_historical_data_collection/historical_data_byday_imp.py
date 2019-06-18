@@ -3,6 +3,7 @@ import datetime
 import logging
 import ast
 from model.historical_data_byday import HistoricalDataByDay
+from model.basic_contract_info import BasicContractInfo
 import settings
 
 class HistoricalDataByDayImp:
@@ -25,28 +26,24 @@ class HistoricalDataByDayImp:
             req_id = int(dist1["ReqId"])
             stock_time = dist1["Date"][0:4] + "-" + dist1["Date"][4:6] + "-" + dist1["Date"][6:8]
             stock_time_str = dist1["Date"]
-            symbol = "GOOG"
             time = datetime.datetime.now()
             
-            stock_time = dist1["Date"][0:4] + "-" + dist1["Date"][4:6] + "-" + dist1["Date"][6:8]
-            sql = "INSERT INTO historical_data_byday( \
-                symbol, req_id, stock_time, stock_time_str, open_pri, high_pri, low_pri, close_pri,import_time) \
-                VALUES ('%s', %s,  '%s',  '%s',  %s,  %s,  %s,  %s,  '%s') ON DUPLICATE KEY UPDATE import_time = '%s' " % \
-                (symbol, req_id, stock_time, stock_time_str, open_pri, high_pri, low_pri, close_pri,time,time)
-            # insert
-            HistoricalDataByDayImp.saveData(sql)
-            
-    
-    @staticmethod    
-    def saveData(sql):
-        logging.info("insert row..." + sql)
-        cursor = settings.db.cursor()
-        try:
-            cursor.execute(sql)
-            settings.db.commit()
-        except Exception as e:
-            print(e)
-            settings.db.rollback()
-        #finally:
-            #settings.db.close()
-        #HistoricalDataByDay.insert(row).execute()
+            print("----------- %s" %req_id)
+            try:
+                item = BasicContractInfo.get_by_id(req_id)
+                if item != None and item.id >0 :
+                    print("insert into %s" %item.symbol)
+                    HistoricalDataByDay.insert(symbol=item.symbol,
+                        stock_time=stock_time,
+                        stock_time_str=stock_time_str,
+                        req_id=req_id,
+                        open_pri=open_pri,
+                        high_pri=high_pri,
+                        low_pri=low_pri,
+                        close_pri=close_pri,
+                        import_time = datetime.datetime.now()
+                        ).on_conflict("replace").execute()
+                else :
+                    logging.error("no record found req_id: %d" %req_id)
+            except Exception as e:
+                logging.error(e)

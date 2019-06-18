@@ -53,11 +53,13 @@ class ContractSamples:
         return contract
 
     @staticmethod
-    def StockALL():
+    def StockByName(secType,symbol,priExchange,currency):
+        if priExchange == "NASDAQ.NMS":
+            priExchange = "ISLAND"
         contract = Contract()
-        contract.currency = "USD"
-        contract.secType = "STK"
-        # contract.symbol = "GOOG"
+        contract.currency = currency
+        contract.secType = secType
+        contract.symbol = symbol
         contract.exchange = "SMART"
-        contract.primaryExchange = "ISLAND"
+        contract.primaryExchange = priExchange
         return contract

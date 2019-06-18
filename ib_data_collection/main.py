@@ -53,6 +53,8 @@ class TestApp(TestWrapper, TestClient):
         
         global contract_idx
         contract_idx = 1
+        global cidx
+        cidx = 1
         print("STARTING ..." + self.bizType)    
 
     @iswrapper
@@ -83,7 +85,7 @@ class TestApp(TestWrapper, TestClient):
             print("ERROR bizType")
 
     # =======================================================
-    # Refresh Contract
+    # Refresh Basic Contract --refresh_contract
     # =======================================================
     # There must be an interval of at least 1 second between successive calls to reqMatchingSymbols
     def refreshBasicContract(self):
@@ -165,12 +167,51 @@ class TestApp(TestWrapper, TestClient):
     # ! [symbolSamples]
     
     # =======================================================
-    # Refresh Historical Data
+    # Refresh Historical Data --by_day
     # =======================================================
+    # The maximum number of simultaneous open historical data requests from the API is 50(30 better)
+    # Making identical historical data requests within 15 seconds
+    # Making six or more historical data requests for the same Contract, Exchange and Tick Type within two seconds
+    # Making more than 60 requests within any ten minute period
     def monitoringHistoricalDataByDay(self):
-        queryTime = (datetime.datetime.today() - datetime.timedelta(days=180)).strftime("%Y%m%d %H:%M:%S")
-        print(queryTime)
-        self.reqHistoricalData(400000, ContractSamples.StockGOOG(), queryTime,"2 M", "1 day", "MIDPOINT", 1, 1, False, [])
+        print("-------------------monitoringHistoricalDataByDay")
+        global cidx
+        items = BasicContractInfo.select().where(BasicContractInfo.disabled == "N").order_by(BasicContractInfo.update_time.asc()).limit(1)
+        for row in items:
+            stock = ContractSamples.StockByName(row.sec_type,row.symbol,row.primary_exchange,row.currency)
+            queryTime = None
+            queryTimeStr = ""
+            day = 2200
+            durationString = "1 Y"
+            if row.update_time == None:
+                queryTime = (datetime.datetime.today() - datetime.timedelta(days=2200))
+            else :
+                day = (datetime.datetime.today() - row.update_time).days
+                if (day>300) :
+                    queryTime = (row.update_time + datetime.timedelta(days=300))
+                elif (day<=300 and day>=30) :
+                     queryTime = (row.update_time + datetime.timedelta(days=day))
+                if (day < 30 and day >0) :
+                    durationString = "1 M"
+                    queryTime = (row.update_time + datetime.timedelta(days=day+1))
+                elif (day == 0) :
+                    print("has up to date")
+                    timer = threading.Timer(10,self.monitoringHistoricalDataByDay)
+                    timer.start()
+                    return
+
+            queryTimeStr = queryTime.strftime("%Y%m%d %H:%M:%S")
+            self.reqHistoricalData(row.id, stock, queryTimeStr,durationString, "1 day", "MIDPOINT", 1, 1, False, [])
+            cidx = cidx +1
+
+            # update time
+            logging.info("UPDATE TIME:%s" %queryTime)
+            u2 = BasicContractInfo(update_time=queryTime)
+            u2.id = row.id
+            u2.save() 
+
+            timer = threading.Timer(10,self.monitoringHistoricalDataByDay)
+            timer.start()
 
     @iswrapper
     def historicalData(self, reqId:int, bar: BarData):
@@ -200,11 +241,22 @@ def main():
         print("no businessType")
         return
 
+    client_id = 1
+    if businessType == "refresh_contract":
+        client_id = 2
+    elif businessType == "set_contract_valid":
+        client_id = 3
+    elif businessType == "by_day":
+        client_id = 4
+    else :
+        print("error args")
+        return
+
     try:
         app = TestApp(businessType)
         # 127.0.0.1 119.29.185.247
         # TEST 4002, PROD 4001
-        app.connect("127.0.0.1", 4001, clientId=0)
+        app.connect("119.29.185.247", 4001, clientId=1)
 
         app.run()
     except:
