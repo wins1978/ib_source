@@ -1,0 +1,29 @@
+(MainThread) 190618_11:02:58.460 INFO client.py:178 sent startApi
+(MainThread) 190618_11:02:58.460 INFO client.py:88 REQUEST startApi {}
+(MainThread) 190618_11:02:58.460 INFO client.py:77 SENDING startApi b'\x00\x00\x00\x0871\x002\x000\x00\x00'
+(MainThread) 190618_11:02:58.467 INFO wrapper.py:48 ANSWER managedAccounts {'accountsList': 'U8071180'}
+(MainThread) 190618_11:02:58.467 INFO wrapper.py:48 ANSWER nextValidId {'orderId': 60}
+(MainThread) 190618_11:02:58.600 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200002, 'pattern': 'IBKR'}
+(MainThread) 190618_11:02:58.601 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200002\x00IBKR\x00'
+(MainThread) 190618_11:02:58.602 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200002, 'pattern': 'IBKR'}
+(MainThread) 190618_11:02:58.602 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200002\x00IBKR\x00'
+(MainThread) 190618_11:02:58.603 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200002, 'pattern': 'IBKR'}
+(MainThread) 190618_11:02:58.603 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200002\x00IBKR\x00'
+(MainThread) 190618_11:02:58.604 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200002, 'pattern': 'IBKR'}
+(MainThread) 190618_11:02:58.604 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200002\x00IBKR\x00'
+(MainThread) 190618_11:02:58.605 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200002, 'pattern': 'IBKR'}
+(MainThread) 190618_11:02:58.605 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200002\x00IBKR\x00'
+(MainThread) 190618_11:02:58.606 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200002, 'pattern': 'IBKR'}
+(MainThread) 190618_11:02:58.606 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200002\x00IBKR\x00'
+(MainThread) 190618_11:02:58.607 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200002, 'pattern': 'IBKR'}
+(MainThread) 190618_11:02:58.607 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200002\x00IBKR\x00'
+(MainThread) 190618_11:02:58.608 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200002, 'pattern': 'IBKR'}
+(MainThread) 190618_11:02:58.609 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200002\x00IBKR\x00'
+(MainThread) 190618_11:02:58.610 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200002, 'pattern': 'IBKR'}
+(MainThread) 190618_11:02:58.610 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200002\x00IBKR\x00'
+(MainThread) 190618_11:02:58.611 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200002, 'pattern': 'IBKR'}
+(MainThread) 190618_11:02:58.611 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200002\x00IBKR\x00'
+(MainThread) 190618_11:02:58.757 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200002, 'contractDescriptions': [2138907000504: Object]}
+(MainThread) 190618_11:02:58.757 INFO main.py:122 ----IBKR
+(MainThread) 190618_11:02:59.767 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200002, 'contractDescriptions': [2138901900312: Object]}
+(MainThread) 190618_11:02:59.767 INFO main.py:122 ----IBKR

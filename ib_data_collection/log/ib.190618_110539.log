@@ -1,0 +1,65 @@
+(MainThread) 190618_11:05:39.658 INFO client.py:178 sent startApi
+(MainThread) 190618_11:05:39.658 INFO client.py:88 REQUEST startApi {}
+(MainThread) 190618_11:05:39.658 INFO client.py:77 SENDING startApi b'\x00\x00\x00\x0871\x002\x000\x00\x00'
+(MainThread) 190618_11:05:39.660 INFO wrapper.py:48 ANSWER managedAccounts {'accountsList': 'U8071180'}
+(MainThread) 190618_11:05:39.660 INFO wrapper.py:48 ANSWER nextValidId {'orderId': 60}
+(MainThread) 190618_11:05:39.826 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200002, 'pattern': 'ZZZZ'}
+(MainThread) 190618_11:05:39.826 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200002\x00ZZZZ\x00'
+(MainThread) 190618_11:05:41.836 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200003, 'pattern': 'ZZZY'}
+(MainThread) 190618_11:05:41.836 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200003\x00ZZZY\x00'
+(MainThread) 190618_11:05:43.837 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200004, 'pattern': 'ZZZX'}
+(MainThread) 190618_11:05:43.837 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200004\x00ZZZX\x00'
+(MainThread) 190618_11:05:45.837 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200005, 'pattern': 'ZZZW'}
+(MainThread) 190618_11:05:45.837 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200005\x00ZZZW\x00'
+(MainThread) 190618_11:05:47.848 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200006, 'pattern': 'ZZZV'}
+(MainThread) 190618_11:05:47.848 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200006\x00ZZZV\x00'
+(MainThread) 190618_11:05:49.859 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200007, 'pattern': 'ZZZU'}
+(MainThread) 190618_11:05:49.860 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200007\x00ZZZU\x00'
+(MainThread) 190618_11:05:51.863 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200008, 'pattern': 'ZZZT'}
+(MainThread) 190618_11:05:51.864 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200008\x00ZZZT\x00'
+(MainThread) 190618_11:05:53.867 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200009, 'pattern': 'ZZZS'}
+(MainThread) 190618_11:05:53.867 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200009\x00ZZZS\x00'
+(MainThread) 190618_11:05:55.867 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200010, 'pattern': 'ZZZR'}
+(MainThread) 190618_11:05:55.867 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200010\x00ZZZR\x00'
+(MainThread) 190618_11:05:57.867 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200011, 'pattern': 'ZZZQ'}
+(MainThread) 190618_11:05:57.867 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200011\x00ZZZQ\x00'
+(MainThread) 190618_11:05:59.877 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200002, 'contractDescriptions': []}
+(MainThread) 190618_11:05:59.877 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200003, 'contractDescriptions': []}
+(MainThread) 190618_11:05:59.886 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200004, 'contractDescriptions': []}
+(MainThread) 190618_11:05:59.902 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200005, 'contractDescriptions': []}
+(MainThread) 190618_11:05:59.906 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200006, 'contractDescriptions': []}
+(MainThread) 190618_11:05:59.909 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200007, 'contractDescriptions': []}
+(MainThread) 190618_11:05:59.912 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200008, 'contractDescriptions': []}
+(MainThread) 190618_11:05:59.914 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200009, 'contractDescriptions': []}
+(MainThread) 190618_11:05:59.917 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200010, 'contractDescriptions': []}
+(MainThread) 190618_11:05:59.920 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200011, 'contractDescriptions': []}
+(Thread-7) 190618_11:06:02.049 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200013, 'pattern': 'ZZZZ'}
+(Thread-7) 190618_11:06:02.050 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200013\x00ZZZZ\x00'
+(MainThread) 190618_11:06:02.207 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200013, 'contractDescriptions': []}
+(Thread-7) 190618_11:06:04.057 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200014, 'pattern': 'ZZZY'}
+(Thread-7) 190618_11:06:04.057 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200014\x00ZZZY\x00'
+(MainThread) 190618_11:06:04.217 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200014, 'contractDescriptions': []}
+(Thread-7) 190618_11:06:06.067 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200015, 'pattern': 'ZZZX'}
+(Thread-7) 190618_11:06:06.067 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200015\x00ZZZX\x00'
+(MainThread) 190618_11:06:06.237 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200015, 'contractDescriptions': []}
+(Thread-7) 190618_11:06:08.077 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200016, 'pattern': 'ZZZW'}
+(Thread-7) 190618_11:06:08.079 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200016\x00ZZZW\x00'
+(MainThread) 190618_11:06:08.242 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200016, 'contractDescriptions': []}
+(Thread-7) 190618_11:06:10.087 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200017, 'pattern': 'ZZZV'}
+(Thread-7) 190618_11:06:10.087 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200017\x00ZZZV\x00'
+(MainThread) 190618_11:06:10.257 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200017, 'contractDescriptions': []}
+(Thread-7) 190618_11:06:12.097 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200018, 'pattern': 'ZZZU'}
+(Thread-7) 190618_11:06:12.097 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200018\x00ZZZU\x00'
+(MainThread) 190618_11:06:12.267 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200018, 'contractDescriptions': []}
+(Thread-7) 190618_11:06:14.108 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200019, 'pattern': 'ZZZT'}
+(Thread-7) 190618_11:06:14.109 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200019\x00ZZZT\x00'
+(MainThread) 190618_11:06:14.267 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200019, 'contractDescriptions': []}
+(Thread-7) 190618_11:06:16.118 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200020, 'pattern': 'ZZZS'}
+(Thread-7) 190618_11:06:16.119 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200020\x00ZZZS\x00'
+(MainThread) 190618_11:06:16.277 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200020, 'contractDescriptions': []}
+(Thread-7) 190618_11:06:18.126 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200021, 'pattern': 'ZZZR'}
+(Thread-7) 190618_11:06:18.127 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200021\x00ZZZR\x00'
+(MainThread) 190618_11:06:18.287 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200021, 'contractDescriptions': []}
+(Thread-7) 190618_11:06:20.132 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200022, 'pattern': 'ZZZQ'}
+(Thread-7) 190618_11:06:20.133 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200022\x00ZZZQ\x00'
+(MainThread) 190618_11:06:20.298 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200022, 'contractDescriptions': []}

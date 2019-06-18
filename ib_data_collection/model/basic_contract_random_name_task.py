@@ -5,7 +5,7 @@ class BasicContractRandomNameTask(Model):
     id = AutoField()
     task_name = CharField(max_length=50)
     task_status = CharField(default='DONE')
-    last_update_time = DateField()
+    last_update_time = DateTimeField()
 
     class Meta:
         database = settings.db

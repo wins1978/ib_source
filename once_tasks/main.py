@@ -30,7 +30,7 @@ def main():
     finally:
         print("close db and mq at END")
         settings.db.close()
-        logging.error("END")
+        logging.info("END")
 
 if __name__ == "__main__":
     main()

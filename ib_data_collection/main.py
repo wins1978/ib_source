@@ -5,6 +5,8 @@ import sys
 import threading
 import time
 from common import *
+import os
+
 import settings
 settings.init()
 
@@ -33,6 +35,8 @@ from contract import *
 from pika_mq import *
 
 from model.basic_contract_random_name_task import BasicContractRandomNameTask
+from model.basic_contract_random_name import BasicContractRandomName
+from model.basic_contract_info import BasicContractInfo
 
 def printinstance(inst:Object):
     attrs = vars(inst)
@@ -70,7 +74,8 @@ class TestApp(TestWrapper, TestClient):
             return
         self.started = True
         if self.bizType == "refresh_contract":
-            self.RefreshBasicContract()
+            self.updateFlagWithExit()
+            self.refreshBasicContract()
         elif self.bizType == "by_day":
             self.mq = PikaMQ()
             self.monitoringHistoricalDataByDay()
@@ -81,21 +86,50 @@ class TestApp(TestWrapper, TestClient):
     # Refresh Contract
     # =======================================================
     # There must be an interval of at least 1 second between successive calls to reqMatchingSymbols
-    def RefreshBasicContract(self):
+    def refreshBasicContract(self):
         global contract_idx
         contract_idx = contract_idx +1
         # get lock flag
-        result = BasicContractRandomNameTask.get(BasicContractRandomNameTask.task_name = "SymbolRandom")
-        flag = result["task_status"]
-        print(flag)
+        u0 = BasicContractRandomNameTask.get(BasicContractRandomNameTask.task_name == "SymbolRandom")
+        if u0.task_status != "DONE":
+            print("exit with :"+u0.task_status)
+            timer = threading.Timer(12,self.refreshBasicContract)
+            timer.start()
+            return
+
+        print("update flag")
+        u1 = BasicContractRandomNameTask(task_status="RUNNING",last_update_time=datetime.datetime.now())
+        u1.id = u0.id
+        u1.save()
 
         # get random names ...
-        # loop
-        # self.callContractMethod(200000 + contract_idx, "IBKR")
+        nameList = BasicContractRandomName.select().order_by(BasicContractRandomName.last_update_date.asc()).limit(10)
+        for row in nameList:
+            print("searching "+row.name)
+            time.sleep(1)
+
+            # update date
+            bcr1 = BasicContractRandomName(last_update_date=datetime.datetime.now())
+            bcr1.id=row.id
+            bcr1.save()
+
+            self.reqMatchingSymbols(200000 + contract_idx, row.name)
+            contract_idx = contract_idx +1
+
+        print("release flag")
+        u2 = BasicContractRandomNameTask(task_status="DONE",last_update_time=datetime.datetime.now())
+        u2.id = u0.id
+        u2.save()    
         
-        timer = threading.Timer(2,self.contractOperations)
+        # start timer
+        timer = threading.Timer(2,self.refreshBasicContract)
         timer.start()
-    
+
+    def updateFlagWithExit(self):
+        u0 = BasicContractRandomNameTask \
+        .update(task_status="DONE",last_update_time=datetime.datetime.now()) \
+        .where(BasicContractRandomNameTask.task_name == "SymbolRandom") \
+        .execute()
 
     @iswrapper
     # ! [symbolSamples]
@@ -104,19 +138,30 @@ class TestApp(TestWrapper, TestClient):
         super().symbolSamples(reqId, contractDescriptions)
         print("Symbol Samples. Request Id: ", reqId)
 
-        for contractDescription in contractDescriptions:
-            logging.info("----"+contractDescription.contract.symbol)
+        for ct in contractDescriptions:
             derivSecTypes = ""
-            for derivSecType in contractDescription.derivativeSecTypes:
+            for derivSecType in ct.derivativeSecTypes:
                 derivSecTypes += derivSecType
                 derivSecTypes += " "
+            
+            if ct.contract.currency != "USD":
+                continue
+
+            BasicContractInfo.insert(symbol=ct.contract.symbol,
+                sec_type=ct.contract.secType,
+                currency=ct.contract.currency,
+                primary_exchange=ct.contract.primaryExchange,
+                last_byday_import_date=datetime.datetime.now(),
+                create_time=datetime.datetime.now()
+                ).on_conflict("replace").execute()
+
             print("Contract: conId:%s, symbol:%s, secType:%s primExchange:%s, "
                   "currency:%s, derivativeSecTypes:%s" % (
-                contractDescription.contract.conId,
-                contractDescription.contract.symbol,
-                contractDescription.contract.secType,
-                contractDescription.contract.primaryExchange,
-                contractDescription.contract.currency, derivSecTypes))
+                ct.contract.conId,
+                ct.contract.symbol,
+                ct.contract.secType,
+                ct.contract.primaryExchange,
+                ct.contract.currency, derivSecTypes))
     # ! [symbolSamples]
     
     # =======================================================
@@ -159,13 +204,13 @@ def main():
         app = TestApp(businessType)
         # 127.0.0.1 119.29.185.247
         # TEST 4002, PROD 4001
-        app.connect("119.29.185.247", 4001, clientId=0)
+        app.connect("127.0.0.1", 4001, clientId=0)
 
         app.run()
     except:
         raise
     finally:
-        if self.bizType == "by_day":
+        if businessType == "by_day":
             app.mq.close()
         logging.error("END")
 

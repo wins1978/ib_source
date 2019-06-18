@@ -4,4 +4,4 @@ from playhouse.db_url import connect
 
 def init():
     global db 
-    db= connect(os.environ.get('MY_DATABASE')) 
+    db= connect(os.environ.get('PROD_DATABASE')) 
