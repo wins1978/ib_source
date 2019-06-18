@@ -1,0 +1,37 @@
+(MainThread) 190618_12:27:56.439 INFO client.py:178 sent startApi
+(MainThread) 190618_12:27:56.439 INFO client.py:88 REQUEST startApi {}
+(MainThread) 190618_12:27:56.439 INFO client.py:77 SENDING startApi b'\x00\x00\x00\x0871\x002\x000\x00\x00'
+(MainThread) 190618_12:27:56.439 INFO wrapper.py:48 ANSWER managedAccounts {'accountsList': 'U8071180'}
+(MainThread) 190618_12:27:56.439 INFO wrapper.py:48 ANSWER nextValidId {'orderId': 60}
+(MainThread) 190618_12:27:57.626 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200002, 'pattern': 'ZZZZ'}
+(MainThread) 190618_12:27:57.626 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200002\x00ZZZZ\x00'
+(MainThread) 190618_12:27:58.686 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200003, 'pattern': 'ZZZY'}
+(MainThread) 190618_12:27:58.686 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200003\x00ZZZY\x00'
+(MainThread) 190618_12:27:59.715 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200004, 'pattern': 'ZZZX'}
+(MainThread) 190618_12:27:59.715 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200004\x00ZZZX\x00'
+(MainThread) 190618_12:28:00.743 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200005, 'pattern': 'ZZZW'}
+(MainThread) 190618_12:28:00.743 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200005\x00ZZZW\x00'
+(MainThread) 190618_12:28:01.776 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200006, 'pattern': 'ZZZV'}
+(MainThread) 190618_12:28:01.776 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200006\x00ZZZV\x00'
+(MainThread) 190618_12:28:02.806 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200007, 'pattern': 'ZZZU'}
+(MainThread) 190618_12:28:02.807 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200007\x00ZZZU\x00'
+(MainThread) 190618_12:28:03.836 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200008, 'pattern': 'ZZZT'}
+(MainThread) 190618_12:28:03.836 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200008\x00ZZZT\x00'
+(MainThread) 190618_12:28:04.857 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200009, 'pattern': 'ZZZS'}
+(MainThread) 190618_12:28:04.857 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200009\x00ZZZS\x00'
+(MainThread) 190618_12:28:05.894 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200010, 'pattern': 'ZZZR'}
+(MainThread) 190618_12:28:05.894 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200010\x00ZZZR\x00'
+(MainThread) 190618_12:28:06.925 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200011, 'pattern': 'ZZZQ'}
+(MainThread) 190618_12:28:06.935 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200011\x00ZZZQ\x00'
+(MainThread) 190618_12:28:06.968 INFO client.py:196 disconnecting
+(Thread-6) 190618_12:28:06.968 ERROR reader.py:52 unhandled exception in EReader thread
+Traceback (most recent call last):
+  File "e:\IB\ib_source\ib_data_collection\ibapi\reader.py", line 34, in run
+    data = self.conn.recvMsg()
+  File "e:\IB\ib_source\ib_data_collection\ibapi\connection.py", line 99, in recvMsg
+    buf = self._recvAllMsg()
+  File "e:\IB\ib_source\ib_data_collection\ibapi\connection.py", line 119, in _recvAllMsg
+    buf = self.socket.recv(4096)
+OSError: [WinError 10038] 在一个非套接字上尝试了一个操作。
+(MainThread) 190618_12:28:06.969 INFO wrapper.py:48 ANSWER connectionClosed {}
+(MainThread) 190618_12:28:06.972 ERROR main.py:212 END

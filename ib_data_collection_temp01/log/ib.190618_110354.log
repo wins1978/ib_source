@@ -1,0 +1,205 @@
+(MainThread) 190618_11:03:54.213 INFO client.py:178 sent startApi
+(MainThread) 190618_11:03:54.213 INFO client.py:88 REQUEST startApi {}
+(MainThread) 190618_11:03:54.213 INFO client.py:77 SENDING startApi b'\x00\x00\x00\x0871\x002\x000\x00\x00'
+(MainThread) 190618_11:03:54.217 INFO wrapper.py:48 ANSWER managedAccounts {'accountsList': 'U8071180'}
+(MainThread) 190618_11:03:54.217 INFO wrapper.py:48 ANSWER nextValidId {'orderId': 60}
+(MainThread) 190618_11:03:54.345 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200002, 'pattern': 'IB'}
+(MainThread) 190618_11:03:54.346 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\r81\x00200002\x00IB\x00'
+(MainThread) 190618_11:03:56.357 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200002, 'pattern': 'IB'}
+(MainThread) 190618_11:03:56.357 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\r81\x00200002\x00IB\x00'
+(MainThread) 190618_11:03:58.367 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200002, 'pattern': 'IB'}
+(MainThread) 190618_11:03:58.367 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\r81\x00200002\x00IB\x00'
+(MainThread) 190618_11:04:00.372 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200002, 'pattern': 'IB'}
+(MainThread) 190618_11:04:00.372 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\r81\x00200002\x00IB\x00'
+(MainThread) 190618_11:04:02.377 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200002, 'pattern': 'IB'}
+(MainThread) 190618_11:04:02.377 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\r81\x00200002\x00IB\x00'
+(MainThread) 190618_11:04:04.377 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200002, 'pattern': 'IB'}
+(MainThread) 190618_11:04:04.377 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\r81\x00200002\x00IB\x00'
+(MainThread) 190618_11:04:06.387 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200002, 'pattern': 'IB'}
+(MainThread) 190618_11:04:06.387 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\r81\x00200002\x00IB\x00'
+(MainThread) 190618_11:04:08.398 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200002, 'pattern': 'IB'}
+(MainThread) 190618_11:04:08.399 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\r81\x00200002\x00IB\x00'
+(MainThread) 190618_11:04:10.409 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200002, 'pattern': 'IB'}
+(MainThread) 190618_11:04:10.410 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\r81\x00200002\x00IB\x00'
+(MainThread) 190618_11:04:12.418 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200002, 'pattern': 'IB'}
+(MainThread) 190618_11:04:12.419 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\r81\x00200002\x00IB\x00'
+(MainThread) 190618_11:04:14.429 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200002, 'contractDescriptions': [1747336223432: Object, 1747341139696: Object, 1747341138016: Object, 1747341386640: Object, 1747341388880: Object, 1747341388320: Object, 1747341389272: Object, 1747341512888: Object, 1747341513616: Object, 1747341513952: Object, 1747341514568: Object, 1747341515016: Object, 1747341515352: Object, 1747341515744: Object, 1747341516136: Object, 1747341516528: Object, 1747341533368: Object]}
+(MainThread) 190618_11:04:14.431 INFO main.py:123 ----IB
+(MainThread) 190618_11:04:14.432 INFO main.py:123 ----IB
+(MainThread) 190618_11:04:14.433 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.434 INFO main.py:123 ----IBMUSD
+(MainThread) 190618_11:04:14.435 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.436 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.438 INFO main.py:123 ----IBDRY
+(MainThread) 190618_11:04:14.440 INFO main.py:123 ----IBE
+(MainThread) 190618_11:04:14.441 INFO main.py:123 ----IBEN
+(MainThread) 190618_11:04:14.443 INFO main.py:123 ----IBN
+(MainThread) 190618_11:04:14.444 INFO main.py:123 ----IBB
+(MainThread) 190618_11:04:14.445 INFO main.py:123 ----IBB
+(MainThread) 190618_11:04:14.447 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.448 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.450 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.451 INFO main.py:123 ----IBKC
+(MainThread) 190618_11:04:14.452 INFO main.py:123 ----IBULHSGFI
+(MainThread) 190618_11:04:14.456 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200002, 'contractDescriptions': [1747336223096: Object, 1747341139696: Object, 1747341138016: Object, 1747341386640: Object, 1747341388880: Object, 1747341388320: Object, 1747341389272: Object, 1747341533424: Object, 1747341534376: Object, 1747341534432: Object, 1747341535664: Object, 1747341536112: Object, 1747341536448: Object, 1747341536840: Object, 1747341537232: Object, 1747341541784: Object, 1747341542176: Object]}
+(MainThread) 190618_11:04:14.457 INFO main.py:123 ----IB
+(MainThread) 190618_11:04:14.459 INFO main.py:123 ----IB
+(MainThread) 190618_11:04:14.459 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.460 INFO main.py:123 ----IBMUSD
+(MainThread) 190618_11:04:14.461 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.462 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.463 INFO main.py:123 ----IBDRY
+(MainThread) 190618_11:04:14.463 INFO main.py:123 ----IBE
+(MainThread) 190618_11:04:14.464 INFO main.py:123 ----IBEN
+(MainThread) 190618_11:04:14.465 INFO main.py:123 ----IBN
+(MainThread) 190618_11:04:14.465 INFO main.py:123 ----IBB
+(MainThread) 190618_11:04:14.466 INFO main.py:123 ----IBB
+(MainThread) 190618_11:04:14.467 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.468 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.469 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.469 INFO main.py:123 ----IBKC
+(MainThread) 190618_11:04:14.470 INFO main.py:123 ----IBULHSGFI
+(MainThread) 190618_11:04:14.473 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200002, 'contractDescriptions': [1747336223096: Object, 1747341139696: Object, 1747341138016: Object, 1747341386640: Object, 1747341388880: Object, 1747341388320: Object, 1747341389272: Object, 1747341533424: Object, 1747341534376: Object, 1747341534432: Object, 1747341535664: Object, 1747341536112: Object, 1747341536448: Object, 1747341536840: Object, 1747341537232: Object, 1747341542344: Object, 1747341541504: Object]}
+(MainThread) 190618_11:04:14.474 INFO main.py:123 ----IB
+(MainThread) 190618_11:04:14.475 INFO main.py:123 ----IB
+(MainThread) 190618_11:04:14.476 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.477 INFO main.py:123 ----IBMUSD
+(MainThread) 190618_11:04:14.477 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.478 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.479 INFO main.py:123 ----IBDRY
+(MainThread) 190618_11:04:14.480 INFO main.py:123 ----IBE
+(MainThread) 190618_11:04:14.481 INFO main.py:123 ----IBEN
+(MainThread) 190618_11:04:14.482 INFO main.py:123 ----IBN
+(MainThread) 190618_11:04:14.486 INFO main.py:123 ----IBB
+(MainThread) 190618_11:04:14.487 INFO main.py:123 ----IBB
+(MainThread) 190618_11:04:14.488 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.489 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.489 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.490 INFO main.py:123 ----IBKC
+(MainThread) 190618_11:04:14.491 INFO main.py:123 ----IBULHSGFI
+(MainThread) 190618_11:04:14.493 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200002, 'contractDescriptions': [1747336223096: Object, 1747341139696: Object, 1747341138016: Object, 1747341533984: Object, 1747341534600: Object, 1747341535272: Object, 1747341535552: Object, 1747341535776: Object, 1747341536448: Object, 1747341536504: Object, 1747341389664: Object, 1747341388656: Object, 1747341388768: Object, 1747341388320: Object, 1747341389104: Object, 1747341541840: Object, 1747341542512: Object]}
+(MainThread) 190618_11:04:14.494 INFO main.py:123 ----IB
+(MainThread) 190618_11:04:14.494 INFO main.py:123 ----IB
+(MainThread) 190618_11:04:14.496 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.496 INFO main.py:123 ----IBMUSD
+(MainThread) 190618_11:04:14.497 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.498 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.499 INFO main.py:123 ----IBDRY
+(MainThread) 190618_11:04:14.499 INFO main.py:123 ----IBE
+(MainThread) 190618_11:04:14.500 INFO main.py:123 ----IBEN
+(MainThread) 190618_11:04:14.501 INFO main.py:123 ----IBN
+(MainThread) 190618_11:04:14.501 INFO main.py:123 ----IBB
+(MainThread) 190618_11:04:14.502 INFO main.py:123 ----IBB
+(MainThread) 190618_11:04:14.503 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.503 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.504 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.505 INFO main.py:123 ----IBKC
+(MainThread) 190618_11:04:14.506 INFO main.py:123 ----IBULHSGFI
+(MainThread) 190618_11:04:14.507 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200002, 'contractDescriptions': [1747336223096: Object, 1747341139696: Object, 1747341138016: Object, 1747341386640: Object, 1747341388936: Object, 1747341388320: Object, 1747341388208: Object, 1747341533480: Object, 1747341534376: Object, 1747341534432: Object, 1747341535496: Object, 1747341536336: Object, 1747341535720: Object, 1747341536504: Object, 1747341537008: Object, 1747341542344: Object, 1747341541952: Object]}
+(MainThread) 190618_11:04:14.508 INFO main.py:123 ----IB
+(MainThread) 190618_11:04:14.509 INFO main.py:123 ----IB
+(MainThread) 190618_11:04:14.510 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.511 INFO main.py:123 ----IBMUSD
+(MainThread) 190618_11:04:14.511 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.513 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.515 INFO main.py:123 ----IBDRY
+(MainThread) 190618_11:04:14.516 INFO main.py:123 ----IBE
+(MainThread) 190618_11:04:14.516 INFO main.py:123 ----IBEN
+(MainThread) 190618_11:04:14.517 INFO main.py:123 ----IBN
+(MainThread) 190618_11:04:14.517 INFO main.py:123 ----IBB
+(MainThread) 190618_11:04:14.518 INFO main.py:123 ----IBB
+(MainThread) 190618_11:04:14.518 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.519 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.520 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.520 INFO main.py:123 ----IBKC
+(MainThread) 190618_11:04:14.521 INFO main.py:123 ----IBULHSGFI
+(MainThread) 190618_11:04:14.522 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200002, 'contractDescriptions': [1747336223096: Object, 1747341139696: Object, 1747341138016: Object, 1747341533592: Object, 1747341534264: Object, 1747341535328: Object, 1747341535272: Object, 1747341535888: Object, 1747341536784: Object, 1747341536504: Object, 1747341388488: Object, 1747341388544: Object, 1747341389776: Object, 1747341388040: Object, 1747341388208: Object, 1747341542232: Object, 1747341541448: Object]}
+(MainThread) 190618_11:04:14.523 INFO main.py:123 ----IB
+(MainThread) 190618_11:04:14.523 INFO main.py:123 ----IB
+(MainThread) 190618_11:04:14.524 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.524 INFO main.py:123 ----IBMUSD
+(MainThread) 190618_11:04:14.525 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.526 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.526 INFO main.py:123 ----IBDRY
+(MainThread) 190618_11:04:14.527 INFO main.py:123 ----IBE
+(MainThread) 190618_11:04:14.527 INFO main.py:123 ----IBEN
+(MainThread) 190618_11:04:14.528 INFO main.py:123 ----IBN
+(MainThread) 190618_11:04:14.529 INFO main.py:123 ----IBB
+(MainThread) 190618_11:04:14.529 INFO main.py:123 ----IBB
+(MainThread) 190618_11:04:14.530 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.530 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.531 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.532 INFO main.py:123 ----IBKC
+(MainThread) 190618_11:04:14.532 INFO main.py:123 ----IBULHSGFI
+(MainThread) 190618_11:04:14.534 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200002, 'contractDescriptions': [1747336223096: Object, 1747341139696: Object, 1747341138016: Object, 1747341387256: Object, 1747341388824: Object, 1747341389384: Object, 1747341388208: Object, 1747341533984: Object, 1747341533704: Object, 1747341534600: Object, 1747341535272: Object, 1747341536000: Object, 1747341536336: Object, 1747341536672: Object, 1747341536952: Object, 1747341541616: Object, 1747341541952: Object]}
+(MainThread) 190618_11:04:14.535 INFO main.py:123 ----IB
+(MainThread) 190618_11:04:14.535 INFO main.py:123 ----IB
+(MainThread) 190618_11:04:14.536 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.537 INFO main.py:123 ----IBMUSD
+(MainThread) 190618_11:04:14.537 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.538 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.538 INFO main.py:123 ----IBDRY
+(MainThread) 190618_11:04:14.539 INFO main.py:123 ----IBE
+(MainThread) 190618_11:04:14.540 INFO main.py:123 ----IBEN
+(MainThread) 190618_11:04:14.542 INFO main.py:123 ----IBN
+(MainThread) 190618_11:04:14.545 INFO main.py:123 ----IBB
+(MainThread) 190618_11:04:14.545 INFO main.py:123 ----IBB
+(MainThread) 190618_11:04:14.546 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.547 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.547 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.548 INFO main.py:123 ----IBKC
+(MainThread) 190618_11:04:14.549 INFO main.py:123 ----IBULHSGFI
+(MainThread) 190618_11:04:14.551 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200002, 'contractDescriptions': [1747336223096: Object, 1747341139696: Object, 1747341138016: Object, 1747341387256: Object, 1747341388824: Object, 1747341389384: Object, 1747341388208: Object, 1747341533984: Object, 1747341533704: Object, 1747341534600: Object, 1747341535272: Object, 1747341536000: Object, 1747341536336: Object, 1747341536672: Object, 1747341536952: Object, 1747341533928: Object, 1747341542232: Object]}
+(MainThread) 190618_11:04:14.551 INFO main.py:123 ----IB
+(MainThread) 190618_11:04:14.552 INFO main.py:123 ----IB
+(MainThread) 190618_11:04:14.553 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.553 INFO main.py:123 ----IBMUSD
+(MainThread) 190618_11:04:14.554 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.554 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.555 INFO main.py:123 ----IBDRY
+(MainThread) 190618_11:04:14.556 INFO main.py:123 ----IBE
+(MainThread) 190618_11:04:14.556 INFO main.py:123 ----IBEN
+(MainThread) 190618_11:04:14.557 INFO main.py:123 ----IBN
+(MainThread) 190618_11:04:14.557 INFO main.py:123 ----IBB
+(MainThread) 190618_11:04:14.558 INFO main.py:123 ----IBB
+(MainThread) 190618_11:04:14.559 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.559 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.560 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.561 INFO main.py:123 ----IBKC
+(MainThread) 190618_11:04:14.561 INFO main.py:123 ----IBULHSGFI
+(MainThread) 190618_11:04:14.563 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200002, 'contractDescriptions': [1747336223096: Object, 1747341139696: Object, 1747341138016: Object, 1747341387256: Object, 1747341388824: Object, 1747341389384: Object, 1747341388208: Object, 1747341533984: Object, 1747341533704: Object, 1747341534600: Object, 1747341535272: Object, 1747341536000: Object, 1747341536336: Object, 1747341536672: Object, 1747341536952: Object, 1747341533928: Object, 1747341542008: Object]}
+(MainThread) 190618_11:04:14.564 INFO main.py:123 ----IB
+(MainThread) 190618_11:04:14.565 INFO main.py:123 ----IB
+(MainThread) 190618_11:04:14.565 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.566 INFO main.py:123 ----IBMUSD
+(MainThread) 190618_11:04:14.567 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.567 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.568 INFO main.py:123 ----IBDRY
+(MainThread) 190618_11:04:14.569 INFO main.py:123 ----IBE
+(MainThread) 190618_11:04:14.569 INFO main.py:123 ----IBEN
+(MainThread) 190618_11:04:14.570 INFO main.py:123 ----IBN
+(MainThread) 190618_11:04:14.570 INFO main.py:123 ----IBB
+(MainThread) 190618_11:04:14.571 INFO main.py:123 ----IBB
+(MainThread) 190618_11:04:14.572 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.572 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.573 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.574 INFO main.py:123 ----IBKC
+(MainThread) 190618_11:04:14.575 INFO main.py:123 ----IBULHSGFI
+(MainThread) 190618_11:04:14.578 INFO wrapper.py:48 ANSWER symbolSamples {'reqId': 200002, 'contractDescriptions': [1747336223096: Object, 1747341139696: Object, 1747341138016: Object, 1747341387256: Object, 1747341388824: Object, 1747341389384: Object, 1747341388208: Object, 1747341533984: Object, 1747341533704: Object, 1747341534600: Object, 1747341535272: Object, 1747341536000: Object, 1747341536336: Object, 1747341536672: Object, 1747341536952: Object, 1747341533928: Object, 1747341542456: Object]}
+(MainThread) 190618_11:04:14.579 INFO main.py:123 ----IB
+(MainThread) 190618_11:04:14.579 INFO main.py:123 ----IB
+(MainThread) 190618_11:04:14.581 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.584 INFO main.py:123 ----IBMUSD
+(MainThread) 190618_11:04:14.584 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.585 INFO main.py:123 ----IBM
+(MainThread) 190618_11:04:14.586 INFO main.py:123 ----IBDRY
+(MainThread) 190618_11:04:14.586 INFO main.py:123 ----IBE
+(MainThread) 190618_11:04:14.587 INFO main.py:123 ----IBEN
+(MainThread) 190618_11:04:14.588 INFO main.py:123 ----IBN
+(MainThread) 190618_11:04:14.588 INFO main.py:123 ----IBB
+(MainThread) 190618_11:04:14.589 INFO main.py:123 ----IBB
+(MainThread) 190618_11:04:14.590 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.590 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.591 INFO main.py:123 ----IBTS
+(MainThread) 190618_11:04:14.591 INFO main.py:123 ----IBKC
+(MainThread) 190618_11:04:14.592 INFO main.py:123 ----IBULHSGFI

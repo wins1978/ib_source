@@ -1,0 +1,4 @@
+{
+    "python.linting.pylintEnabled": false,
+    "python.pythonPath": "C:\\Tools\\vs2019\\Shared\\Python37_64\\python.exe"
+}

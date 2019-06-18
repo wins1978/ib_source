@@ -76,6 +76,7 @@ class TestApp(TestWrapper, TestClient):
                 print("error---:%d" %errorCode)
                 self.updateBasicContractInvalidFlag(reqId)
 
+
     @iswrapper
     def nextValidId(self, orderId: int):
         super().nextValidId(orderId)
@@ -85,17 +86,11 @@ class TestApp(TestWrapper, TestClient):
         self.start()
 
     def start(self):
+        print("-----------")
         if self.started:
             return
         self.started = True
-        if self.bizType == "refresh_contract":
-            self.updateFlagWithExit()
-            self.refreshBasicContract()
-        elif self.bizType == "by_day":
-            self.mq = PikaMQ()
-            self.monitoringHistoricalDataByDay()
-        else :
-            print("ERROR bizType")
+        self.monitoringHistoricalDataByDay()
 
     # =======================================================
     # Refresh Basic Contract --refresh_contract
@@ -123,18 +118,10 @@ class TestApp(TestWrapper, TestClient):
             print("searching "+row.name)
             time.sleep(1)
 
-            # update date
-            bcr1 = BasicContractRandomName(last_update_date=datetime.datetime.now())
-            bcr1.id=row.id
-            bcr1.save()
-
             self.reqMatchingSymbols(200000 + contract_idx, row.name)
             contract_idx = contract_idx +1
 
-        print("release flag")
-        u2 = BasicContractRandomNameTask(task_status="DONE",last_update_time=datetime.datetime.now())
-        u2.id = u0.id
-        u2.save()    
+       
         
         # start timer
         timer = threading.Timer(2,self.refreshBasicContract)
@@ -189,45 +176,23 @@ class TestApp(TestWrapper, TestClient):
     def monitoringHistoricalDataByDay(self):
         print("-------------------monitoringHistoricalDataByDay")
         global cidx
-        items = BasicContractInfo.select().where((BasicContractInfo.disabled == "N") \
-            & ((BasicContractInfo.primary_exchange == "NYSE") \
-            | (BasicContractInfo.primary_exchange == "NASDAQ.NMS"))) \
-            .order_by(BasicContractInfo.update_time.asc()).limit(1)
+        #items = BasicContractInfo.select().where((BasicContractInfo.symbol == "GOOG") & ((BasicContractInfo.primary_exchange == "NYSE") | (BasicContractInfo.primary_exchange == "NASDAQ.NMS"))).order_by(BasicContractInfo.update_time.asc()).limit(1)
+        items = BasicContractInfo.select().where(BasicContractInfo.symbol == "GOOG").order_by(BasicContractInfo.update_time.asc()).limit(1)
+        
+        print("-----------------%s" %items)
         for row in items:
+            print("-----------------%s" %items)
             stock = ContractSamples.StockByName(row.sec_type,row.symbol,row.primary_exchange,row.currency)
             queryTime = None
             queryTimeStr = ""
             day = 2200
-            durationString = "1 Y"
-            if row.update_time == None:
-                queryTime = (datetime.datetime.today() - datetime.timedelta(days=2200))
-            else :
-                day = (datetime.datetime.today() - row.update_time).days
-                if (day>300) :
-                    queryTime = (row.update_time + datetime.timedelta(days=300))
-                elif (day<=300 and day>=30) :
-                     queryTime = (row.update_time + datetime.timedelta(days=day))
-                if (day < 30 and day >0) :
-                    durationString = "1 M"
-                    queryTime = (row.update_time + datetime.timedelta(days=day+1))
-                elif (day == 0) :
-                    print("has up to date")
-                    timer = threading.Timer(10,self.monitoringHistoricalDataByDay)
-                    timer.start()
-                    return
+            durationString = "1 D"
+            queryTime = (datetime.datetime.now() - datetime.timedelta(days=30))
+               
 
             queryTimeStr = queryTime.strftime("%Y%m%d %H:%M:%S")
             self.reqHistoricalData(row.id, stock, queryTimeStr,durationString, "1 day", "MIDPOINT", 1, 1, False, [])
             cidx = cidx +1
-
-            # update time
-            logging.info("UPDATE TIME:%s" %queryTime)
-            u2 = BasicContractInfo(update_time=queryTime)
-            u2.id = row.id
-            u2.save() 
-
-            timer = threading.Timer(10,self.monitoringHistoricalDataByDay)
-            timer.start()
 
     def updateBasicContractInvalidFlag(self,id):
         item = BasicContractInfo.get_by_id(id)
@@ -240,7 +205,6 @@ class TestApp(TestWrapper, TestClient):
     def historicalData(self, reqId:int, bar: BarData):
         print("HistoricalData. ReqId:", reqId, "BarData.", bar)
         msg = "ReqType: HistoricalData, ReqId: " +str(reqId) +", " + str(bar)
-        self.mq.send(msg)
 
     @iswrapper
     def historicalDataEnd(self, reqId: int, start: str, end: str):
@@ -259,34 +223,19 @@ class TestApp(TestWrapper, TestClient):
 def main():
     SetupLogger()
 
-    businessType = sys.argv[1]
-    if businessType == "":
-        print("no businessType")
-        return
-
-    client_id = 1
-    if businessType == "refresh_contract":
-        client_id = 2
-    elif businessType == "set_contract_valid":
-        client_id = 3
-    elif businessType == "by_day":
-        client_id = 4
-    else :
-        print("error args")
-        return
+    client_id = 41
+   
 
     try:
-        app = TestApp(businessType)
+        app = TestApp("by_day")
         # 127.0.0.1 119.29.185.247
         # TEST 4002, PROD 4001
-        app.connect("119.29.185.247", 4001, clientId=client_id)
+        app.connect("119.29.185.247", 4001, clientId=50)
 
         app.run()
     except:
         raise
     finally:
-        if businessType == "by_day":
-            app.mq.close()
         logging.error("END")
 
 if __name__ == "__main__":

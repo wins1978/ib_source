@@ -1,0 +1,8 @@
+(MainThread) 190618_12:00:05.774 INFO client.py:178 sent startApi
+(MainThread) 190618_12:00:05.774 INFO client.py:88 REQUEST startApi {}
+(MainThread) 190618_12:00:05.774 INFO client.py:77 SENDING startApi b'\x00\x00\x00\x0871\x002\x000\x00\x00'
+(MainThread) 190618_12:00:05.776 INFO wrapper.py:48 ANSWER managedAccounts {'accountsList': 'U8071180'}
+(MainThread) 190618_12:00:05.777 INFO wrapper.py:48 ANSWER nextValidId {'orderId': 60}
+(MainThread) 190618_12:00:11.098 INFO client.py:241 detected KeyboardInterrupt, SystemExit
+(MainThread) 190618_12:00:11.499 INFO client.py:241 detected KeyboardInterrupt, SystemExit
+(MainThread) 190618_12:00:11.700 INFO client.py:241 detected KeyboardInterrupt, SystemExit

@@ -11,6 +11,7 @@ class HistoricalDataByDayImp:
     def receiveData(body):
         dist1 = {}
         msg = body.decode()
+        logging.info(msg)
         arr = msg.split(",")
         for item in arr:
             keyPair = item.split(":")

@@ -1,0 +1,5 @@
+(MainThread) 190618_10:32:37.872 INFO client.py:178 sent startApi
+(MainThread) 190618_10:32:37.872 INFO client.py:88 REQUEST startApi {}
+(MainThread) 190618_10:32:37.873 INFO client.py:77 SENDING startApi b'\x00\x00\x00\x0871\x002\x000\x00\x00'
+(MainThread) 190618_10:32:37.874 INFO wrapper.py:48 ANSWER managedAccounts {'accountsList': 'U8071180'}
+(MainThread) 190618_10:32:37.875 INFO wrapper.py:48 ANSWER nextValidId {'orderId': 60}

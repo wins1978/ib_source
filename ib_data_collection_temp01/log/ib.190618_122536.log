@@ -1,0 +1,23 @@
+(MainThread) 190618_12:25:36.095 INFO client.py:178 sent startApi
+(MainThread) 190618_12:25:36.095 INFO client.py:88 REQUEST startApi {}
+(MainThread) 190618_12:25:36.095 INFO client.py:77 SENDING startApi b'\x00\x00\x00\x0871\x002\x000\x00\x00'
+(MainThread) 190618_12:25:36.097 INFO wrapper.py:48 ANSWER managedAccounts {'accountsList': 'U8071180'}
+(MainThread) 190618_12:25:36.097 INFO wrapper.py:48 ANSWER nextValidId {'orderId': 60}
+(MainThread) 190618_12:25:37.302 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200002, 'pattern': 'ZZZZ'}
+(MainThread) 190618_12:25:37.302 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200002\x00ZZZZ\x00'
+(MainThread) 190618_12:25:38.345 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200003, 'pattern': 'ZZZY'}
+(MainThread) 190618_12:25:38.346 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200003\x00ZZZY\x00'
+(MainThread) 190618_12:25:39.384 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200004, 'pattern': 'ZZZX'}
+(MainThread) 190618_12:25:39.384 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200004\x00ZZZX\x00'
+(MainThread) 190618_12:25:40.430 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200005, 'pattern': 'ZZZW'}
+(MainThread) 190618_12:25:40.431 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200005\x00ZZZW\x00'
+(MainThread) 190618_12:25:41.477 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200006, 'pattern': 'ZZZV'}
+(MainThread) 190618_12:25:41.477 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200006\x00ZZZV\x00'
+(MainThread) 190618_12:25:42.507 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200007, 'pattern': 'ZZZU'}
+(MainThread) 190618_12:25:42.517 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200007\x00ZZZU\x00'
+(MainThread) 190618_12:25:43.567 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200008, 'pattern': 'ZZZT'}
+(MainThread) 190618_12:25:43.567 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200008\x00ZZZT\x00'
+(MainThread) 190618_12:25:44.597 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200009, 'pattern': 'ZZZS'}
+(MainThread) 190618_12:25:44.597 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200009\x00ZZZS\x00'
+(MainThread) 190618_12:25:45.634 INFO client.py:88 REQUEST reqMatchingSymbols {'reqId': 200010, 'pattern': 'ZZZR'}
+(MainThread) 190618_12:25:45.634 INFO client.py:77 SENDING reqMatchingSymbols b'\x00\x00\x00\x0f81\x00200010\x00ZZZR\x00'
