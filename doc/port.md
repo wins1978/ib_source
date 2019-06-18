@@ -1,0 +1,1 @@
+reqMatchingSymbols  200000

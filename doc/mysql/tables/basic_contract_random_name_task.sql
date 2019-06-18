@@ -1,0 +1,7 @@
+CREATE TABLE `basic_contract_random_name_task` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '',
+  `task_name` VARCHAR(50) DEFAULT NULL COMMENT '',
+  `task_status` VARCHAR(50) DEFAULT 'DONE' COMMENT 'DONE/RUNNING',
+  `last_update_time` DATETIME DEFAULT NULL COMMENT '',
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB; 
