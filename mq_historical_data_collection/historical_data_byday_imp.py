@@ -11,6 +11,8 @@ class HistoricalDataByDayImp:
     def receiveData(body):
         dist1 = {}
         msg = body.decode()
+        print(msg)
+        return
         logging.info(msg)
         arr = msg.split(",")
         for item in arr:
@@ -29,21 +31,39 @@ class HistoricalDataByDayImp:
             stock_time_str = dist1["Date"]
             time = datetime.datetime.now()
             
-            print("----------- %s" %req_id)
             try:
                 item = BasicContractInfo.get_by_id(req_id)
                 if item != None and item.id >0 :
-                    print("insert into %s" %item.symbol)
-                    HistoricalDataByDay.insert(symbol=item.symbol,
-                        stock_time=stock_time,
-                        stock_time_str=stock_time_str,
-                        req_id=req_id,
-                        open_pri=open_pri,
-                        high_pri=high_pri,
-                        low_pri=low_pri,
-                        close_pri=close_pri,
-                        import_time = datetime.datetime.now()
-                        ).on_conflict("replace").execute()
+                    with settings.db.atomic() as transaction:
+                        try:
+                            HistoricalDataByDay.insert(symbol=item.symbol,
+                                stock_time=stock_time,
+                                stock_time_str=stock_time_str,
+                                req_id=req_id,
+                                open_pri=open_pri,
+                                high_pri=high_pri,
+                                low_pri=low_pri,
+                                close_pri=close_pri,
+                                import_time = datetime.datetime.now()
+                                ).on_conflict("replace").execute()
+                            # update time
+                            newTime = datetime.datetime.strptime(stock_time, '%Y-%m-%d')
+                            needUpdate = 0
+                            if item.publish_time == None :
+                                needUpdate = 1
+                            else :
+                                day = (newTime - item.publish_time).days
+                                logging.info("newTime: %s, publishTime: %s" %(newTime, item.publish_time))
+                                if day >0 :
+                                   needUpdate = 1 
+                            if needUpdate == 1 :
+                                logging.info("update BasicContractInfo: %s" %newTime)
+                                u2 = BasicContractInfo(publish_time=newTime)
+                                u2.id = item.id
+                                u2.save()
+                        except Exception as e:
+                            logging.error(e)
+                            transaction.rollback()
                 else :
                     logging.error("no record found req_id: %d" %req_id)
             except Exception as e:

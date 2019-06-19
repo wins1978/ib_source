@@ -53,8 +53,7 @@ class TestApp(TestWrapper, TestClient):
         
         global contract_idx
         contract_idx = 1
-        global cidx
-        cidx = 1
+
         print("STARTING ..." + self.bizType)    
 
     @iswrapper
@@ -68,12 +67,11 @@ class TestApp(TestWrapper, TestClient):
         if reqId == -1 :
             return
         if self.bizType == "by_day":
-            print("My--Error. Id:", reqId, "Code:", errorCode, "Msg:", errorString, "bizType", self.bizType)
-            errorList = {162: "", 200: ""}
+            print("ERROR. ID:", reqId, "Code:", errorCode, "Msg:", errorString, "bizType", self.bizType)
+            errorList = {200: ""}
             if errorCode in errorList:
                 # 200 Invalid destination exchange specified
                 # 162 No data of type EODChart is available for the exchange 'DOLLR4LOT'
-                print("error---:%d" %errorCode)
                 self.updateBasicContractInvalidFlag(reqId)
 
     @iswrapper
@@ -187,47 +185,45 @@ class TestApp(TestWrapper, TestClient):
     # Making six or more historical data requests for the same Contract, Exchange and Tick Type within two seconds
     # Making more than 60 requests within any ten minute period
     def monitoringHistoricalDataByDay(self):
-        print("-------------------monitoringHistoricalDataByDay")
-        global cidx
-        items = BasicContractInfo.select().where((BasicContractInfo.disabled == "N") \
+        print("Refresh Historical Data --BY_DAY")
+        row = BasicContractInfo.select().where((BasicContractInfo.disabled == "N") \
             & ((BasicContractInfo.primary_exchange == "NYSE") \
             | (BasicContractInfo.primary_exchange == "NASDAQ.NMS"))) \
-            .order_by(BasicContractInfo.update_time.asc()).limit(1)
-        for row in items:
-            stock = ContractSamples.StockByName(row.sec_type,row.symbol,row.primary_exchange,row.currency)
-            queryTime = None
-            queryTimeStr = ""
-            day = 2200
-            durationString = "1 Y"
-            if row.update_time == None:
-                queryTime = (datetime.datetime.today() - datetime.timedelta(days=2200))
-            else :
-                day = (datetime.datetime.today() - row.update_time).days
-                if (day>300) :
-                    queryTime = (row.update_time + datetime.timedelta(days=300))
-                elif (day<=300 and day>=30) :
-                     queryTime = (row.update_time + datetime.timedelta(days=day))
-                if (day < 30 and day >0) :
-                    durationString = "1 M"
-                    queryTime = (row.update_time + datetime.timedelta(days=day+1))
-                elif (day == 0) :
-                    print("has up to date")
-                    timer = threading.Timer(10,self.monitoringHistoricalDataByDay)
-                    timer.start()
-                    return
+            .order_by(BasicContractInfo.publish_time.asc()).get()
 
-            queryTimeStr = queryTime.strftime("%Y%m%d %H:%M:%S")
-            self.reqHistoricalData(row.id, stock, queryTimeStr,durationString, "1 day", "MIDPOINT", 1, 1, False, [])
-            cidx = cidx +1
+        stock = ContractSamples.StockByName(row.sec_type,row.symbol,row.primary_exchange,row.currency)
+        queryTime = None
+        queryTimeStr = ""
+        day = 2200
+        durationString = "1 Y"
+        if row.publish_time == None:
+            queryTime = (datetime.datetime.today() - datetime.timedelta(days=day))
+        else :
+            day = (datetime.datetime.today() - row.publish_time).days
+            if (day>300) :
+                queryTime = (row.publish_time + datetime.timedelta(days=300))
+            elif (day<=300 and day>=30) :
+                 queryTime = (row.publish_time + datetime.timedelta(days=day))
+            if (day < 30 and day >0) :
+                durationString = "1 M"
+                queryTime = (row.publish_time + datetime.timedelta(days=day+1))
+            elif (day == 0) :
+                print("has up to date")
+                timer = threading.Timer(10,self.monitoringHistoricalDataByDay)
+                timer.start()
+                return
 
-            # update time
-            logging.info("UPDATE TIME:%s" %queryTime)
-            u2 = BasicContractInfo(update_time=queryTime)
-            u2.id = row.id
-            u2.save() 
+        queryTimeStr = queryTime.strftime("%Y%m%d %H:%M:%S")
+        self.reqHistoricalData(row.id, stock, queryTimeStr,durationString, "1 day", "MIDPOINT", 1, 1, False, [])
+        #self.reqHistoricalData(row.id, ContractSamples.StockGOOG(), queryTimeStr,"1 M", "1 day", "MIDPOINT", 1, 1, False, [])
 
-            timer = threading.Timer(10,self.monitoringHistoricalDataByDay)
-            timer.start()
+        # update time
+        u2 = BasicContractInfo(update_time=datetime.datetime.now())
+        u2.id = row.id
+        u2.save() 
+
+        timer = threading.Timer(10,self.monitoringHistoricalDataByDay)
+        timer.start()
 
     def updateBasicContractInvalidFlag(self,id):
         item = BasicContractInfo.get_by_id(id)
@@ -235,6 +231,9 @@ class TestApp(TestWrapper, TestClient):
             u1 = BasicContractInfo(disabled = "Y")
             u1.id= item.id
             u1.save()
+    
+    def updateTimeWhenNoData(self,datestr):
+            print("-----")
 
     @iswrapper
     def historicalData(self, reqId:int, bar: BarData):
