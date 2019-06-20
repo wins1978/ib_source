@@ -251,10 +251,26 @@ class TestApp(TestWrapper, TestClient):
     @iswrapper
     def historicalDataUpdate(self, reqId: int, bar: BarData):
         print("HistoricalDataUpdate. ReqId:", reqId, "BarData.", bar)
-
+    
     # =======================================================
     # Main
     # =======================================================
+    def exitApp(self,startTimeStr,endTimeStr):
+        # "16:00:00","17:30:00"
+        dt = datetime.datetime.now().strftime("%Y-%m-%d")
+        
+        targetStartTimeStr = dt + " " + startTimeStr
+        targetStartTime = datetime.datetime.strptime(targetStartTimeStr, "%Y-%m-%d %H:%M:%S")
+        
+        targetEndTimeStr = dt + " " + endTimeStr
+        targetEndTime = datetime.datetime.strptime(targetEndTimeStr, "%Y-%m-%d %H:%M:%S")
+        
+        currentTime = datetime.datetime.now()
+        
+        if currentTime >= targetStartTime and currentTime < targetEndTime :
+            logging.info("exit at: %s" %currentTime)
+            sys.exit(0)
+    
 def main():
     SetupLogger()
 
@@ -286,7 +302,7 @@ def main():
     finally:
         if businessType == "by_day":
             app.mq.close()
-        logging.error("END")
+        logging.info("END")
 
 if __name__ == "__main__":
     main()
