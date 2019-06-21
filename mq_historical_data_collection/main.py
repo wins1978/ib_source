@@ -1,4 +1,16 @@
 import os
+import os
+import pprint
+import shlex
+import subprocess
+command = shlex.split("env -i bash -c 'source ~/.bash_profile && env'")
+proc = subprocess.Popen(command, stdout = subprocess.PIPE)
+for line1 in proc.stdout:
+    line = line1.decode()
+    (key, _, value) = line.partition("=")
+    if value != "":
+        os.environ[key] = value.replace('\n', '')
+proc.communicate()
 
 from peewee import *
 

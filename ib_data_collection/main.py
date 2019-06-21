@@ -6,6 +6,19 @@ import threading
 import time
 from common import *
 import os
+import pprint
+import shlex
+import subprocess
+command = shlex.split("env -i bash -c 'source ~/.bash_profile && env'")
+proc = subprocess.Popen(command, stdout = subprocess.PIPE)
+for line1 in proc.stdout:
+    line = line1.decode()
+    (key, _, value) = line.partition("=")
+    if value != "":
+        os.environ[key] = value.replace('\n', '')
+proc.communicate()
+
+pprint.pprint(dict(os.environ))
 
 import settings
 settings.init()
@@ -42,6 +55,8 @@ def printinstance(inst:Object):
     attrs = vars(inst)
     print(', '.join("%s: %s" % item for item in attrs.items()))
 
+# 01 09 * * * python /data/ib_data_collection/main.py refresh_contract >/dev/null &
+# 01 18 * * * python /data/ib_data_collection/main.py refresh_contract >/dev/null &
 class TestApp(TestWrapper, TestClient):
     def __init__(self,bizType):
         TestWrapper.__init__(self)
@@ -53,6 +68,8 @@ class TestApp(TestWrapper, TestClient):
         
         global contract_idx
         contract_idx = 1
+        global by_day_dist
+        by_day_dist = {}
 
         print("STARTING ..." + self.bizType)    
 
@@ -64,15 +81,26 @@ class TestApp(TestWrapper, TestClient):
     @iswrapper
     def error(self, reqId: TickerId, errorCode: int, errorString: str):
         super().error(reqId, errorCode, errorString)
-        if reqId == -1 :
+        logging.error("reqId: %s, errorCode: %s,errorString: %s, bizType: %s" %(reqId,errorCode, errorString, self.bizType))
+        if reqId == -1:
+            return
+        
+        if errorCode == 502 : # Could not connect to TWS
+            print("EXIT with 602")
+            os._exit(-1)
             return
         if self.bizType == "by_day":
             print("ERROR. ID:", reqId, "Code:", errorCode, "Msg:", errorString, "bizType", self.bizType)
-            errorList = {200: ""}
+            errorList = {200: "",354: ""}
             if errorCode in errorList:
                 # 200 Invalid destination exchange specified
-                # 162 No data of type EODChart is available for the exchange 'DOLLR4LOT'
+                # 354 Not subscribed to requested market data
                 self.updateBasicContractInvalidFlag(reqId)
+            if errorCode == 162:
+                rst = errorString.find("query returned no data")
+                if rst >= 0:
+                    self.updateTimeWhenNoData(reqId)
+                    
 
     @iswrapper
     def nextValidId(self, orderId: int):
@@ -102,6 +130,10 @@ class TestApp(TestWrapper, TestClient):
     def refreshBasicContract(self):
         global contract_idx
         contract_idx = contract_idx +1
+        # crontab 9:00, 18:00
+        self.exitApp("08:40:00","08:50:00")
+        self.exitApp("17:30:00","17:50:00")
+        
         # get lock flag
         u0 = BasicContractRandomNameTask.get(BasicContractRandomNameTask.task_name == "SymbolRandom")
         if u0.task_status != "DONE":
@@ -185,6 +217,9 @@ class TestApp(TestWrapper, TestClient):
     # Making six or more historical data requests for the same Contract, Exchange and Tick Type within two seconds
     # Making more than 60 requests within any ten minute period
     def monitoringHistoricalDataByDay(self):
+        # crontab 9:00, 18:00
+        self.exitApp("08:40:00","08:58:00")
+        self.exitApp("17:30:00","17:58:00")
         print("Refresh Historical Data --BY_DAY")
         row = BasicContractInfo.select().where((BasicContractInfo.disabled == "N") \
             & ((BasicContractInfo.primary_exchange == "NYSE") \
@@ -214,6 +249,8 @@ class TestApp(TestWrapper, TestClient):
                 return
 
         queryTimeStr = queryTime.strftime("%Y%m%d %H:%M:%S")
+        global by_day_dist
+        by_day_dist[str(row.id)] = queryTimeStr
         self.reqHistoricalData(row.id, stock, queryTimeStr,durationString, "1 day", "MIDPOINT", 1, 1, False, [])
         #self.reqHistoricalData(row.id, ContractSamples.StockGOOG(), queryTimeStr,"1 M", "1 day", "MIDPOINT", 1, 1, False, [])
 
@@ -232,8 +269,12 @@ class TestApp(TestWrapper, TestClient):
             u1.id= item.id
             u1.save()
     
-    def updateTimeWhenNoData(self,datestr):
-            print("-----")
+    def updateTimeWhenNoData(self,id):
+        stock_time = by_day_dist[str(id)]
+        newTime = datetime.datetime.strptime(stock_time, '%Y%m%d %H:%M:%S')
+        u2 = BasicContractInfo(publish_time=newTime)
+        u2.id = id
+        u2.save()
 
     @iswrapper
     def historicalData(self, reqId:int, bar: BarData):
@@ -269,7 +310,8 @@ class TestApp(TestWrapper, TestClient):
         
         if currentTime >= targetStartTime and currentTime < targetEndTime :
             logging.info("exit at: %s" %currentTime)
-            sys.exit(0)
+            print("exit at: %s" %currentTime)
+            os._exit(0)
     
 def main():
     SetupLogger()
