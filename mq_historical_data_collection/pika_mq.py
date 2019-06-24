@@ -37,7 +37,29 @@ def on_message(channel, method_frame, header_frame, body, args):
     t = threading.Thread(target=do_work, args=(connection, channel, delivery_tag, body))
     t.start()
     threads.append(t)
+    
+def monitorTime():
+    exitApp("17:50:00","18:00:00")
+    timer = threading.Timer(100,monitorTime)
+    timer.start()
 
+def exitApp(startTimeStr,endTimeStr):
+    # "16:00:00","17:30:00"
+    dt = datetime.datetime.now().strftime("%Y-%m-%d")
+    
+    targetStartTimeStr = dt + " " + startTimeStr
+    targetStartTime = datetime.datetime.strptime(targetStartTimeStr, "%Y-%m-%d %H:%M:%S")
+    
+    targetEndTimeStr = dt + " " + endTimeStr
+    targetEndTime = datetime.datetime.strptime(targetEndTimeStr, "%Y-%m-%d %H:%M:%S")
+    
+    currentTime = datetime.datetime.now()
+    
+    if currentTime >= targetStartTime and currentTime < targetEndTime :
+        logging.info("exit at: %s" %currentTime)
+        print("exit at: %s" %currentTime)
+        os._exit(0)        
+    
 # credentials = pika.PlainCredentials('guest', 'guest')
 # Note: sending a short heartbeat to prove that heartbeats are still
 # sent even though the worker simulates long-running work
@@ -57,7 +79,9 @@ threads = []
 on_callback = functools.partial(on_message, args=(connection, threads))
 channel.basic_consume(queue='ib_historical_data_byday', on_message_callback=on_callback)
 try:
+    monitorTime()
     channel.start_consuming()
+    
 except KeyboardInterrupt:
     channel.stop_consuming()
 
