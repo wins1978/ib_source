@@ -219,13 +219,13 @@ class TestApp(TestWrapper, TestClient):
     # Making more than 60 requests within any ten minute period
     def monitoringHistoricalDataByDay(self):
         # crontab 9:00, 18:00
-        self.exitApp("08:40:00","08:58:00")
-        self.exitApp("17:30:00","17:58:00")
+        self.exitApp("17:00:00","17:30:00")
         print("Refresh Historical Data --BY_DAY")
+        # BasicContractInfo.disabled == "N"
         row = BasicContractInfo.select().where((BasicContractInfo.disabled == "N") \
             & ((BasicContractInfo.primary_exchange == "NYSE") \
             | (BasicContractInfo.primary_exchange == "NASDAQ.NMS"))) \
-            .order_by(BasicContractInfo.publish_time.asc()).get()
+            .order_by(BasicContractInfo.update_time.asc()).get()
 
         stock = ContractSamples.StockByName(row.sec_type,row.symbol,row.primary_exchange,row.currency)
         queryTime = None
@@ -236,12 +236,15 @@ class TestApp(TestWrapper, TestClient):
             queryTime = (datetime.datetime.today() - datetime.timedelta(days=day))
         else :
             day = (datetime.datetime.today() - row.publish_time).days
-            if (day>300) :
+            if (day>=300) :
                 queryTime = (row.publish_time + datetime.timedelta(days=300))
-            elif (day<=300 and day>=30) :
+            elif (day<300 and day>=30) :
                  queryTime = (row.publish_time + datetime.timedelta(days=day))
-            if (day < 30 and day >0) :
+            elif (day < 30 and day >=5) :
                 durationString = "1 M"
+                queryTime = (row.publish_time + datetime.timedelta(days=day+1))
+            elif (day < 5 and day >0) :
+                durationString = "6 D"
                 queryTime = (row.publish_time + datetime.timedelta(days=day+1))
             elif (day == 0) :
                 print("has up to date")

@@ -12,7 +12,6 @@ class HistoricalDataByDayImp:
         dist1 = {}
         msg = body.decode()
         print(msg)
-        return
         logging.info(msg)
         arr = msg.split(",")
         for item in arr:
@@ -58,6 +57,7 @@ class HistoricalDataByDayImp:
                                    needUpdate = 1 
                             if needUpdate == 1 :
                                 logging.info("update BasicContractInfo: %s" %newTime)
+                                print("update BasicContractInfo: %s" %newTime)
                                 u2 = BasicContractInfo(publish_time=newTime)
                                 u2.id = item.id
                                 u2.save()
