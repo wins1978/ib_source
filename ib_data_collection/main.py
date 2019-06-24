@@ -55,8 +55,10 @@ def printinstance(inst:Object):
     attrs = vars(inst)
     print(', '.join("%s: %s" % item for item in attrs.items()))
 
-# 01 09 * * * python /data/ib_data_collection/main.py refresh_contract >/dev/null &
-# 01 18 * * * python /data/ib_data_collection/main.py refresh_contract >/dev/null &
+#01 09 * * * /usr/bin/python /data/ib_data_collection/main.py refresh_contract >/data/crontab.log 2>&1
+#01 18 * * * /usr/bin/python /data/ib_data_collection/main.py refresh_contract >/data/crontab.log 2>&1
+#05 18 * * * /usr/bin/python /data/ib_data_collection/main.py by_day >/data/crontab.log 2>&1
+#06 18 * * * /usr/bin/python /data/mq_historical_data_collection/main.py mq >/data/crontab.log 2>&1
 class TestApp(TestWrapper, TestClient):
     def __init__(self,bizType):
         TestWrapper.__init__(self)
@@ -218,6 +220,7 @@ class TestApp(TestWrapper, TestClient):
     # Making six or more historical data requests for the same Contract, Exchange and Tick Type within two seconds
     # Making more than 60 requests within any ten minute period
     def monitoringHistoricalDataByDay(self):
+        sleepTime = 100
         # crontab 9:00, 18:00
         self.exitApp("17:00:00","17:30:00")
         print("Refresh Historical Data --BY_DAY")
@@ -248,7 +251,7 @@ class TestApp(TestWrapper, TestClient):
                 queryTime = (row.publish_time + datetime.timedelta(days=day+1))
             elif (day == 0) :
                 print("has up to date")
-                timer = threading.Timer(10,self.monitoringHistoricalDataByDay)
+                timer = threading.Timer(sleepTime,self.monitoringHistoricalDataByDay)
                 timer.start()
                 return
 
@@ -263,7 +266,7 @@ class TestApp(TestWrapper, TestClient):
         u2.id = row.id
         u2.save() 
 
-        timer = threading.Timer(10,self.monitoringHistoricalDataByDay)
+        timer = threading.Timer(sleepTime,self.monitoringHistoricalDataByDay)
         timer.start()
 
     def updateBasicContractInvalidFlag(self,id):
