@@ -86,7 +86,7 @@ class TestApp(TestWrapper, TestClient):
             return
         
         if errorCode == 502 : # Could not connect to TWS
-            print("EXIT with 602")
+            print("EXIT with 502")
             os._exit(-1)
             return
         if self.bizType == "by_day":
@@ -99,6 +99,7 @@ class TestApp(TestWrapper, TestClient):
             if errorCode == 162:
                 rst = errorString.find("query returned no data")
                 if rst >= 0:
+                    print("update time with no data")
                     self.updateTimeWhenNoData(reqId)
                     
 
