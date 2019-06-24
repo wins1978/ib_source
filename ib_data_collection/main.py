@@ -220,7 +220,7 @@ class TestApp(TestWrapper, TestClient):
     # Making six or more historical data requests for the same Contract, Exchange and Tick Type within two seconds
     # Making more than 60 requests within any ten minute period
     def monitoringHistoricalDataByDay(self):
-        sleepTime = 100
+        sleepTime = 30
         # crontab 9:00, 18:00
         self.exitApp("17:00:00","17:30:00")
         print("Refresh Historical Data --BY_DAY")

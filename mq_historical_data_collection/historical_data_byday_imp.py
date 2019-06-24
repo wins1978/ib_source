@@ -11,7 +11,7 @@ class HistoricalDataByDayImp:
     def receiveData(body):
         dist1 = {}
         msg = body.decode()
-        print(msg)
+        #print(msg)
         logging.info(msg)
         arr = msg.split(",")
         for item in arr:
