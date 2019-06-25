@@ -39,7 +39,7 @@ def on_message(channel, method_frame, header_frame, body, args):
     threads.append(t)
     
 def monitorTime():
-    exitApp("17:50:00","18:00:00")
+    exitApp("18:30:00","18:40:00")
     timer = threading.Timer(100,monitorTime)
     timer.start()
 

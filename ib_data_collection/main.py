@@ -57,8 +57,9 @@ def printinstance(inst:Object):
 
 #01 09 * * * /usr/bin/python /data/ib_data_collection/main.py refresh_contract >/data/crontab.log 2>&1
 #01 18 * * * /usr/bin/python /data/ib_data_collection/main.py refresh_contract >/data/crontab.log 2>&1
-#05 18 * * * /usr/bin/python /data/ib_data_collection/main.py by_day >/data/crontab.log 2>&1
+###05 18 * * * /usr/bin/python /data/ib_data_collection/main.py by_day >/data/crontab.log 2>&1
 #06 18 * * * /usr/bin/python /data/mq_historical_data_collection/main.py mq >/data/crontab.log 2>&1
+#*/10 * * * * sh /data/ib_data_collection/run.sh >/data/crontab.log 2>&1
 class TestApp(TestWrapper, TestClient):
     def __init__(self,bizType):
         TestWrapper.__init__(self)
@@ -103,6 +104,10 @@ class TestApp(TestWrapper, TestClient):
                 if rst >= 0:
                     print("update time with no data")
                     self.updateTimeWhenNoData(reqId)
+            if errorCode == 504:
+                rst = errorString.find("Not connected")
+                if rst >= 0:
+                    os._exit(-1)
                     
 
     @iswrapper
